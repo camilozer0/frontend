@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div class="container">
+  <!-- The form -->
+  <form class="example-form">
+    <!-- date -->
+    <mat-form-field class="example-full-width" class="marginleft">
+      <mat-label>Choose a date</mat-label>
+      <input
+        matInput
+        [min]="minDate"
+        [max]="maxDate"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- search button date -->
+    <button mat-raised-button color="primary" class="marginleft sizeb">
+      <span class="material-icons" style="font-size: 50px"> search </span>
+    </button>
+    <!-- affiliate -->
+    <mat-form-field class="example-full-width marginleft">
+      <mat-label>Afiliado</mat-label>
+      <input type="text" matInput autocomplete="off" />
+    </mat-form-field>
+    <!-- search button affiliate -->
+    <button mat-raised-button color="primary" class="marginleft sizeb">
+      <span class="material-icons" style="font-size: 50px"> search </span>
+    </button>
+  </form>
+</div>

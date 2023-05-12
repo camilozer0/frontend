@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  minDate = new Date(1920, 0, 1);
+  maxDate = new Date(2020, 0, 1);
+
+
 }
