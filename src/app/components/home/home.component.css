@@ -1,10 +1,11 @@
 .sizebutton {
-  height: 50px;
-  width: 50px;
-  margin-left: 10px;
-  border-radius: 10px;
+  height: 60px;
+  width: 60px;
+  margin-left: 12px;
+  margin-right: 50px;
+  border-radius: 50%;
 }
 
-.marginleft {
-  margin-left: 10px;
+table {
+  width: 100%;
 }

@@ -1,21 +1,6 @@
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
-})
-
-
-
-
-
-export class HomeComponent {
-
-  minDate = new Date(1920, 0, 1);
-  maxDate = new Date(2020, 0, 1);
-
-  export interface PeriodicElement {
+export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
@@ -35,7 +20,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
 ];
 
-displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-dataSource = ELEMENT_DATA;
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+
+export class HomeComponent {
+
+  minDate = new Date(1920, 0, 1);
+  maxDate = new Date(2020, 0, 1);
+
+
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = ELEMENT_DATA;
 
 }
