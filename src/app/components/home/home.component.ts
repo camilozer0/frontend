@@ -34,7 +34,12 @@ export class HomeComponent {
 
 
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['action', 'position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+
+
+  eliminarUsuario(index: number) {
+
+  }
 
 }
