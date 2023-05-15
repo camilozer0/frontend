@@ -89,7 +89,7 @@ export class TablaAnidadaComponent {
   title = 'angular-mat-table-example';
 
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['action', 'id', 'name', 'email', 'address'];
+  columnsToDisplay = ['phone', 'id', 'name', 'email', 'address'];
 
   toggleRow(element: { expanded: boolean; }) {
     // Uncommnet to open only single row at once
