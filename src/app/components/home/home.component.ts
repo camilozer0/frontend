@@ -1,45 +1,143 @@
-import { Component } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { Afiliado } from 'src/app/models/afiliado';
+import { AfiliadoService } from 'src/app/services/afiliado.service';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+  expanded: boolean;
+
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+export interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: string;
+  phone: string;
+  website: string;
+  company: string;
+  expanded: boolean;
+}
+
+const ELEMENT_DATA: User[] = [
+  {
+    "id": 123,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": "Kulas Light Apt. 556 Gwenborough",
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": "Romaguera-Crona",
+    "expanded": false
+  },
+  {
+    "id": 52,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "address": "Victor Plains Suite 879 Wisokyburgh",
+    "phone": "010-692-6593 x09125",
+    "website": "anastasia.net",
+    "company": "Deckow-Crist",
+    "expanded": false
+  },
+  {
+    "id": 62,
+    "name": "Clementine Bauch",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "address": "Douglas Extension Suite 847 McKenziehaven",
+    "phone": "1-463-123-4447",
+    "website": "ramiro.info",
+    "company": "Romaguera-Jacobson",
+    "expanded": false
+  },
+  {
+    "id": 65,
+    "name": "Patricia Lebsack",
+    "username": "Karianne",
+    "email": "Julianne.OConner@kory.org",
+    "address": "Hoeger Mall Apt. 692 South Elvis",
+    "phone": "493-170-9623 x156",
+    "website": "kale.biz",
+    "company": "Robel-Corkery",
+    "expanded": false
+  },
+  {
+    "id": 84,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "address": "Skiles Walks Suite 351 Roscoeview",
+    "phone": "(254)954-1289",
+    "website": "demarco.info",
+    "company": "Keebler LLC",
+    "expanded": false
+  }
 ];
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  public afiliados: Afiliado[] = [];
+
 
   minDate = new Date(1920, 0, 1);
   maxDate = new Date(2020, 0, 1);
 
+  title = 'angular-mat-table-example';
+  displayedColumns: string[] = ['id', 'name', 'age', 'email'];
 
 
-  displayedColumns: string[] = ['action', 'position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  datatwo = ELEMENT_DATA;
+  columnsToDisplay = ['id', 'name', 'email', 'address'];
 
+  constructor(private afiliadoService: AfiliadoService) { }
 
-  eliminarUsuario(index: number) {
-
+  ngOnInit(): void {
+    this.cargarAfiliado();
   }
+
+  cargarAfiliado() {
+    //this.afiliados = this.afiliadoService.getAfiliado();
+
+    this.afiliadoService.getAfiliado().subscribe(response =>
+      this.afiliados = response);
+    console.log
+  }
+
+
+  toggleRow(element: { expanded: boolean; }) {
+    // Uncommnet to open only single row at once
+    this.afiliados.forEach(row => {
+      //row.expanded = false;
+    })
+    element.expanded = !element.expanded;
+  }
+
+  /* manageAllRows(flag: boolean) {
+    this.afiliados.forEach(row => {
+      row.expanded = flag;
+    })
+  } */
 
 }

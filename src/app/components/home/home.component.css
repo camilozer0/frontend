@@ -1,9 +1,33 @@
-.sizebutton {
-  margin-left: 12px;
-  margin-right: 50px;
-  border-radius: 50%;
+.example-detail-row {
+  height: 0;
 }
 
-table {
-  width: 100%;
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.detail-table {
+  background: #b7b7b773;
+  text-align: center;
+}.example-detail-row {
+  height: 0;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.detail-table {
+  background: #b7b7b773;
+  text-align: center;
 }

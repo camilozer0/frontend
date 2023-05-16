@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PeriodicElement } from '../tabla-anidada/tabla-anidada.component';
 import { Afiliado } from '../models/afiliado';
+import { PeriodicElement } from '../components/home/home.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AfiliadoService {
 
-  private baseUrlAffiliates = 'http://localhost:3306/sophos';
+  private baseUrlAffiliates = 'http://localhost:8080/api/controller';
 
   ELEMENT_ONE: PeriodicElement[] = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', expanded: false },
@@ -27,14 +27,16 @@ export class AfiliadoService {
   constructor(private http: HttpClient) { }
 
 
-  getAfiliado() {
-    //: Observable<Afiliado[]> {
+  getAfiliado(): Observable<Afiliado[]> {
 
     // consumir el microservicio
 
-    return this.ELEMENT_ONE.slice();
+    //return this.ELEMENT_ONE.slice();
 
-    //return this.http.get<Afiliado[]>(`${this.baseUrlAffiliates} / Affiliate`);
+    return this.http.get<Afiliado[]>(`${this.baseUrlAffiliates}/Affiliate`);
+    //return this.http.get<Afiliado[]>('http://localhost:8080/api/controller/Affiliate');
+
+
   }
 
   /*  getAfiliado(): Observable {
