@@ -1,4 +1,4 @@
-export interface citas {
+export interface Cita {
   id: number;
   fecha: Date;
   hora: Date;

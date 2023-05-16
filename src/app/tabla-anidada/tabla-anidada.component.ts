@@ -1,5 +1,17 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatTableDataSourcePaginator } from '@angular/material/table';
+import { AfiliadoService } from '../services/afiliado.service';
+
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+  expanded: boolean;
+
+}
 
 export interface User {
   id: number;
@@ -84,25 +96,47 @@ const ELEMENT_DATA: User[] = [
   ],
 })
 
-export class TablaAnidadaComponent {
+export class TablaAnidadaComponent implements OnInit {
+
+  public afiliados: PeriodicElement[] = [];
+
+
+  minDate = new Date(1920, 0, 1);
+  maxDate = new Date(2020, 0, 1);
 
   title = 'angular-mat-table-example';
+  displayedColumns: string[] = ['action', 'position', 'name', 'weight', 'symbol'];
 
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['phone', 'id', 'name', 'email', 'address'];
+
+  datatwo = ELEMENT_DATA;
+  columnsToDisplay = ['id', 'name', 'email', 'address'];
+
+  constructor(private afiliadoService: AfiliadoService) { }
+
+  ngOnInit(): void {
+    this.cargarAfiliado();
+  }
+
+  cargarAfiliado() {
+    this.afiliados = this.afiliadoService.getAfiliado();
+
+    /* this.afiliadoService.getAfiliado().subscribe(response =>
+      this.afiliados = response);
+      console.log(response)*/
+  }
 
   toggleRow(element: { expanded: boolean; }) {
     // Uncommnet to open only single row at once
-    // ELEMENT_DATA.forEach(row => {
-    //   row.expanded = false;
-    // })
-    element.expanded = !element.expanded
+    this.afiliados.forEach(row => {
+      row.expanded = false;
+    })
+    element.expanded = !element.expanded;
   }
 
-  manageAllRows(flag: boolean) {
-    ELEMENT_DATA.forEach(row => {
+  /* manageAllRows(flag: boolean) {
+    this.afiliados.forEach(row => {
       row.expanded = flag;
     })
-  }
+  } */
 
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "endoscopia",
+    "description": "en ayunas"
+  },
+  {
+    "id": 2,
+    "name": "colonoscopia",
+    "description": "en ayunas"
+  },
+  {
+    "id": 3,
+    "name": "sangre",
+    "description": "en ayunas"
+  },
+  {
+    "id": 4,
+    "name": "tomografia",
+    "description": "en ayunas"
+  },
+  {
+    "id": 5,
+    "name": "ecografia",
+    "description": "en ayunas"
+  },
+  {
+    "id": 6,
+    "name": "rayos-x",
+    "description": "en ayunas"
+  }
+]

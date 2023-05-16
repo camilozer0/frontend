@@ -29,7 +29,7 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [
     CommonModule,
@@ -41,7 +41,7 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
   ]
 })
 export class MaterialModule { }
