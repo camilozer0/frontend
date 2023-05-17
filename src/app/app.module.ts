@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { VistaIComponent } from './components/shared/vista-i/vista-i.component';
 import { PruebasComponent } from './pruebas/pruebas.component';
+import { TabladComponent } from './components/shared/tablad/tablad.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PruebasComponent } from './pruebas/pruebas.component';
     HomeComponent,
     VistaIComponent,
     PruebasComponent,
+    TabladComponent,
   ],
   imports: [
     BrowserModule,

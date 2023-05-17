@@ -1,0 +1,15 @@
+<table class="mat-elevation-z8">
+  <thead>
+    <tr>
+      <th *ngFor="let column of headers">{{ column }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rows of informacion">
+      <td *ngFor="let col of headers">{{ rows[col] }}</td>
+      <td>
+        <mat-icon>add_box</mat-icon>
+      </td>
+    </tr>
+  </tbody>
+</table>
