@@ -13,6 +13,7 @@ import { PruebasComponent } from './components/pruebas/pruebas.component';
 import { TabladComponent } from './components/shared/tablad/tablad.component';
 import { CitasComponent } from './components/citas/citas.component';
 import { AfiliadosComponent } from './components/afiliados/afiliados.component';
+import { AgregarComponent } from './shared/agregar/agregar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AfiliadosComponent } from './components/afiliados/afiliados.component';
     TabladComponent,
     CitasComponent,
     AfiliadosComponent,
+    AgregarComponent,
   ],
   imports: [
     BrowserModule,
