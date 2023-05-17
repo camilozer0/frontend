@@ -9,8 +9,10 @@ import { MaterialModule } from './shared/material/material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { VistaIComponent } from './components/shared/vista-i/vista-i.component';
-import { PruebasComponent } from './pruebas/pruebas.component';
+import { PruebasComponent } from './components/pruebas/pruebas.component';
 import { TabladComponent } from './components/shared/tablad/tablad.component';
+import { CitasComponent } from './components/citas/citas.component';
+import { AfiliadosComponent } from './components/afiliados/afiliados.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { TabladComponent } from './components/shared/tablad/tablad.component';
     VistaIComponent,
     PruebasComponent,
     TabladComponent,
+    CitasComponent,
+    AfiliadosComponent,
   ],
   imports: [
     BrowserModule,

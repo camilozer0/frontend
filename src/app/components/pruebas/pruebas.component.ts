@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Test } from '../models/test';
-import { PruebaService } from '../services/prueba.service';
+import { Test } from '../../models/test';
+import { PruebaService } from '../../services/prueba.service';
 
 @Component({
   selector: 'app-pruebas',

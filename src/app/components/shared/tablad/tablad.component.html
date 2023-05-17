@@ -1,17 +1,19 @@
-<table class="mat-elevation-z8">
-  <thead>
-    <tr>
-      <th *ngFor="let column of headers">{{ column }}</th>
-      <th>Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let rows of informacion">
-      <td *ngFor="let col of headers">{{ rows[col] }}</td>
-      <td>
-        <mat-icon>update</mat-icon>
-        <mat-icon>delete_outline</mat-icon>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th *ngFor="let column of headers">{{ column }}</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rows of informacion">
+        <td *ngFor="let col of headers">{{ rows[col] }}</td>
+        <td>
+          <mat-icon>update</mat-icon>
+          <mat-icon>delete_outline</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
