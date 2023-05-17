@@ -1,5 +1,9 @@
 .container {
   display:flex;
   justify-content: right;
+}
+
+.add {
+  display: flex;
   cursor: pointer;
 }
