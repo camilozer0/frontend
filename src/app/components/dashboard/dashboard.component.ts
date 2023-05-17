@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
-  tituloInicial = "Consulta";
+  tituloInicial = "Consultas";
 
   opciones(opciones: string) {
     this.tituloInicial = opciones;
