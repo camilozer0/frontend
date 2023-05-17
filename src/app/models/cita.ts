@@ -1,16 +1,10 @@
+import { Afiliado } from "./afiliado";
+import { Test } from "./test";
+
 export interface Cita {
   id: number;
   fecha: Date;
   hora: Date;
-  idTest: [
-    id: number,
-    nombre: string,
-    descripcion: string
-  ];
-  idAffiliate: [
-    id: number,
-    nombre: string,
-    edad: number,
-    email: string
-  ]
+  idTest: Test[];
+  idAffiliate: Afiliado[]
 }

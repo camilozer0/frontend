@@ -10,7 +10,14 @@
     Agenda de citas - Reto semillero
   </button>
   <span class="example-spacer"></span>
-  <button mat-flat-button color="primary" class="margrig" (click)="setRoute2()">
+  <button
+    mat-flat-button
+    color="primary"
+    class="margrig"
+    (click)="setRoute2()"
+    [routerLink]="['citas']"
+    routerLinkActive="router-link-active"
+  >
     <mat-icon>calendar_month</mat-icon>
     Citas
   </button>
@@ -25,7 +32,14 @@
     <mat-icon>list_alt</mat-icon>
     Pruebas
   </button>
-  <button mat-flat-button color="primary" class="margrig" (click)="setRoute4()">
+  <button
+    mat-flat-button
+    color="primary"
+    class="margrig"
+    (click)="setRoute4()"
+    [routerLink]="['afiliados']"
+    routerLinkActive="router-link-active"
+  >
     <mat-icon>person</mat-icon>
     Afiliados
   </button>
