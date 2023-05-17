@@ -3,4 +3,25 @@
   <p>Nueva cita</p>
 </div>
 
-<table></table>
+<table class="mat-elevation-z8">
+  <thead>
+    <tr>
+      <th *ngFor="let column of colQ">{{ column }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rows of tests">
+      <td *ngFor="let col of colQ">{{ rows[col] }}</td>
+      <td>
+        <mat-icon>add_box</mat-icon>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <table mat-table [dataSource]="tests" class="mat-elevation-z8">
+  <ng-container matColumnDef="{{ column }}" *ngFor="let column of colQ">
+    <th mat-header-row *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let toshow">{{ toshow[column] }}</td>
+  </ng-container>
+</table> -->

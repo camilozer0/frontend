@@ -9,7 +9,8 @@ import { PruebaService } from '../services/prueba.service';
 })
 export class PruebasComponent implements OnInit {
 
-  public tests: Test[] = [];
+  public tests: any[] = [];
+  public colQ: any[] = ['id', 'name', 'description'];
 
   constructor(private testService: PruebaService) { }
   ngOnInit(): void {
