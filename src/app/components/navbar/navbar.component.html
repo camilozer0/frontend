@@ -1,5 +1,12 @@
 <mat-toolbar color="primary">
-  <button mat-flat-button color="primary" class="margrig" (click)="setRoute1()">
+  <button
+    mat-flat-button
+    color="primary"
+    class="margrig"
+    (click)="setRoute1()"
+    [routerLink]="['home']"
+    routerLinkActive="router-link-active"
+  >
     Agenda de citas - Reto semillero
   </button>
   <span class="example-spacer"></span>
@@ -7,7 +14,14 @@
     <mat-icon>calendar_month</mat-icon>
     Citas
   </button>
-  <button mat-flat-button color="primary" class="margrig" (click)="setRoute3()">
+  <button
+    mat-flat-button
+    color="primary"
+    class="margrig"
+    (click)="setRoute3()"
+    [routerLink]="['pruebas']"
+    routerLinkActive="router-link-active"
+  >
     <mat-icon>list_alt</mat-icon>
     Pruebas
   </button>
