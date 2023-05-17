@@ -1,7 +1,6 @@
-<app-navbar></app-navbar>
+<app-navbar (screen)="opciones($event)"></app-navbar>
 
 <div class="container">
-  <span style="font-weight: 500">Consultas</span>
-  <hr color="#3f51b5" />
+  <app-vista-i [titulo]="tituloInicial"></app-vista-i>
   <app-home></app-home>
 </div>
