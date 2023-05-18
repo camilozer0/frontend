@@ -1,7 +1,12 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 <div class="container">
   <div class="add">
-    <mat-icon style="margin-right: 5px">add_box</mat-icon>
+    <mat-icon
+      style="margin-right: 5px"
+      [routerLink]="['nueva']"
+      routerLinkActive="router-link-active"
+      >add_box</mat-icon
+    >
     <p style="margin-top: 3px">Nueva cita</p>
   </div>
 </div>
@@ -13,5 +18,3 @@
     <td mat-cell *matCellDef="let toshow">{{ toshow[column] }}</td>
   </ng-container>
 </table> -->
-
-<app-agregar></app-agregar>

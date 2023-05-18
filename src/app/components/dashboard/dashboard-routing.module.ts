@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { PruebasComponent } from 'src/app/components/pruebas/pruebas.component';
 import { CitasComponent } from '../citas/citas.component';
 import { AfiliadosComponent } from '../afiliados/afiliados.component';
+import { NuevapruebaComponent } from '../forms/nuevaprueba/nuevaprueba.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,12 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'citas', component: CitasComponent },
-      { path: 'pruebas', component: PruebasComponent },
+      {
+        path: 'pruebas', component: PruebasComponent,
+        children: [
+          { path: 'nueva', component: NuevapruebaComponent }
+        ]
+      },
       { path: 'afiliados', component: AfiliadosComponent },
     ]
   }];

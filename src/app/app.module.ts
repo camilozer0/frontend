@@ -13,7 +13,6 @@ import { PruebasComponent } from './components/pruebas/pruebas.component';
 import { TabladComponent } from './components/shared/tablad/tablad.component';
 import { CitasComponent } from './components/citas/citas.component';
 import { AfiliadosComponent } from './components/afiliados/afiliados.component';
-import { AgregarComponent } from './components/shared/agregar/agregar.component';
 import { NuevapruebaComponent } from './components/forms/nuevaprueba/nuevaprueba.component';
 import { EditarpruebaComponent } from './components/forms/editarprueba/editarprueba.component';
 
@@ -29,7 +28,6 @@ import { EditarpruebaComponent } from './components/forms/editarprueba/editarpru
     TabladComponent,
     CitasComponent,
     AfiliadosComponent,
-    AgregarComponent,
     NuevapruebaComponent,
     EditarpruebaComponent,
   ],
