@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 
 @Component({
@@ -20,7 +21,6 @@ export class AfiliadosComponent implements OnInit {
   }
 
   cargarAfiliado() {
-    //this.afiliados = this.afiliadoService.getAfiliado();
 
     this.afiliadoService.getAfiliado().subscribe(response => {
       this.afiliados = response;

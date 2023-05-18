@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Test } from 'src/app/models/test';
 
 @Component({
   selector: 'app-tablad',
@@ -9,4 +10,5 @@ export class TabladComponent {
 
   @Input() headers: any[] = [];
   @Input() informacion: any[] = [];
+  @Input() colNumber: any[] = [];
 }
