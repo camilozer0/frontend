@@ -1,41 +1,12 @@
 <div class="container">
-  <table class="mat-elevation-z8">
-    <thead>
-      <tr>
-        <th *ngFor="let column of headers">{{ column }}</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rows of informacion">
-        <td *ngFor="let col of headers">{{ rows[col] }}</td>
-        <td>
-          <mat-icon
-            style="margin-right: 5px; cursor: pointer"
-            [routerLink]="['editar']"
-            routerLinkActive="router-link-active"
-            >update</mat-icon
-          >
-          <mat-icon
-            style="margin-right: 5px; cursor: pointer"
-            [routerLink]="['borrar']"
-            routerLinkActive="router-link-active"
-            >delete_outline</mat-icon
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<br />
-
-<div class="container">
   <table mat-table [dataSource]="informacion" class="mat-elevation-z8">
     <ng-container matColumnDef="{{ column }}" *ngFor="let column of headers">
       <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-      <th mat-header-cell *matHeaderCellDef>Opciones</th>
       <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="icons">
+      <th mat-header-cell *matHeaderCellDef>icons</th>
       <td mat-cell *matCellDef>
         <mat-icon
           style="margin-right: 5px; cursor: pointer"
@@ -51,7 +22,8 @@
         >
       </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="headers"></tr>
-    <tr mat-row *matRowDef="let element; columns: headers"></tr>
+
+    <tr mat-header-row *matHeaderRowDef="colNumber"></tr>
+    <tr mat-row *matRowDef="let element; columns: colNumber"></tr>
   </table>
 </div>

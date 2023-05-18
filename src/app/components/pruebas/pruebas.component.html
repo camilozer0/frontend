@@ -11,7 +11,11 @@
   </div>
 </div>
 
-<app-tablad [headers]="colQ" [informacion]="tests"></app-tablad>
+<app-tablad
+  [colNumber]="colN"
+  [headers]="colQ"
+  [informacion]="tests"
+></app-tablad>
 <!-- <table mat-table [dataSource]="tests" class="mat-elevation-z8">
   <ng-container matColumnDef="{{ column }}" *ngFor="let column of colQ">
     <th mat-header-row *matHeaderCellDef>{{ column }}</th>

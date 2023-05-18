@@ -11,4 +11,6 @@ export class TabladComponent {
   @Input() headers: any[] = [];
   @Input() informacion: any[] = [];
   @Input() colNumber: any[] = [];
+  newC = ['icons'];
+  totalC = this.headers.concat(this.newC);
 }

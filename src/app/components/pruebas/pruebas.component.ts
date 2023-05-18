@@ -14,6 +14,7 @@ export class PruebasComponent implements OnInit {
 
   public tests: Test[] = [];
   public colQ: any[] = ['id', 'name', 'description'];
+  public colN: any[] = ['id', 'name', 'description', 'icons'];
 
   constructor(private testService: PruebaService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
