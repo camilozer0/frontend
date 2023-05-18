@@ -7,6 +7,9 @@ import { AfiliadoService } from 'src/app/services/afiliado.service';
   styleUrls: ['./afiliados.component.css']
 })
 export class AfiliadosComponent implements OnInit {
+
+  tituloInicial = 'Afiliados';
+
   public afiliados: any[] = [];
   public colQ: any[] = ['id', 'name', 'age', 'email'];
 

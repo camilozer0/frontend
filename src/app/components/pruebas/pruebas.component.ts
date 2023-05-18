@@ -9,6 +9,8 @@ import { PruebaService } from '../../services/prueba.service';
 })
 export class PruebasComponent implements OnInit {
 
+  tituloInicial = 'Pruebas'
+
   public tests: Test[] = [];
   public colQ: any[] = ['id', 'name', 'description'];
 

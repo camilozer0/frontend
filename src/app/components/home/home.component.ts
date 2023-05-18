@@ -98,6 +98,10 @@ const ELEMENT_DATA: User[] = [
 
 export class HomeComponent implements OnInit {
 
+
+  // El titulo de la vista
+  tituloInicial = "Consultas";
+
   public afiliados: Afiliado[] = [];
 
 

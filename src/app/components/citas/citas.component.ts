@@ -8,6 +8,9 @@ import { CitaService } from 'src/app/services/cita.service';
   styleUrls: ['./citas.component.css']
 })
 export class CitasComponent {
+
+  tituloInicial = "Citas";
+
   public citas: Cita[] = [];
   public citas2: any[] = [];
   public colQ: any[] = ['id', 'date', 'hour', 'idTest', 'idAffiliate'];
