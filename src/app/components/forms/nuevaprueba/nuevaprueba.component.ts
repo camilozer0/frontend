@@ -11,8 +11,8 @@ export class NuevapruebaComponent {
   tituloInicial = 'Pruebas - Nueva Prueba'
 
   pruebasForm = this.fb.group({
-    email: new FormControl(''),
-    password: new FormControl('')
+    name: new FormControl(''),
+    description: new FormControl('')
   });
 
   constructor(private fb: FormBuilder) { }

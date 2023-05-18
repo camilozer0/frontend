@@ -14,13 +14,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'citas', component: CitasComponent },
-      {
-        path: 'pruebas', component: PruebasComponent,
-        children: [
-          { path: 'nueva', component: NuevapruebaComponent }
-        ]
-      },
+      { path: 'pruebas', component: PruebasComponent },
       { path: 'afiliados', component: AfiliadosComponent },
+      { path: 'pruebas/nueva', component: NuevapruebaComponent }
     ]
   }];
 

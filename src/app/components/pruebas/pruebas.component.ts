@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Test } from '../../models/test';
 import { PruebaService } from '../../services/prueba.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pruebas',
@@ -14,9 +15,13 @@ export class PruebasComponent implements OnInit {
   public tests: Test[] = [];
   public colQ: any[] = ['id', 'name', 'description'];
 
-  constructor(private testService: PruebaService) { }
+  constructor(private testService: PruebaService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     this.getTests();
+
+    /*     nuevaPrueba() {
+          this.router.navigate(['nueva'], { relativeTo: this.route });
+        } */
   }
 
   getTests() {
@@ -28,5 +33,7 @@ export class PruebasComponent implements OnInit {
   }
 
 
-
 }
+
+
+
