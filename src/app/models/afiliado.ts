@@ -1,6 +1,7 @@
 export interface Afiliado {
   id: number;
-  nombre: string;
-  edad: number;
+  name: string;
+  age: number;
   email: string
 }
+

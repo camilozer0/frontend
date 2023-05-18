@@ -3,8 +3,8 @@ import { Test } from "./test";
 
 export interface Cita {
   id: number;
-  fecha: Date;
-  hora: Date;
+  date: Date;
+  hour: Date;
   idTest: Test[];
   idAffiliate: Afiliado[]
 }

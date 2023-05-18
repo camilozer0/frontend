@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 //Other
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 //material modules
@@ -14,7 +15,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-
 
 
 @NgModule({
@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     HttpClientModule,
     MatTableModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -42,6 +43,7 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     HttpClientModule,
     MatTableModule,
+    ReactiveFormsModule
   ]
 })
 export class MaterialModule { }
