@@ -6,6 +6,8 @@ import { PruebasComponent } from 'src/app/components/pruebas/pruebas.component';
 import { CitasComponent } from '../citas/citas.component';
 import { AfiliadosComponent } from '../afiliados/afiliados.component';
 import { NuevapruebaComponent } from '../forms/nuevaprueba/nuevaprueba.component';
+import { NuevoafiliadoComponent } from '../forms/nuevoafiliado/nuevoafiliado.component';
+import { NuevacitaComponent } from '../forms/nuevacita/nuevacita.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,9 @@ const routes: Routes = [
       { path: 'citas', component: CitasComponent },
       { path: 'pruebas', component: PruebasComponent },
       { path: 'afiliados', component: AfiliadosComponent },
-      { path: 'pruebas/nueva', component: NuevapruebaComponent }
+      { path: 'pruebas/nueva', component: NuevapruebaComponent },
+      { path: 'afiliados/nuevo', component: NuevoafiliadoComponent },
+      { path: 'citas/nueva', component: NuevacitaComponent }
     ]
   }];
 

@@ -8,6 +8,8 @@ import { FormBuilder, FormControl } from '@angular/forms';
 })
 export class EditarpruebaComponent {
 
+  tituloInicial = 'Pruebas - Actualizar Prueba'
+
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
 

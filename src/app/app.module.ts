@@ -15,6 +15,10 @@ import { CitasComponent } from './components/citas/citas.component';
 import { AfiliadosComponent } from './components/afiliados/afiliados.component';
 import { NuevapruebaComponent } from './components/forms/nuevaprueba/nuevaprueba.component';
 import { EditarpruebaComponent } from './components/forms/editarprueba/editarprueba.component';
+import { EditarcitaComponent } from './components/forms/editarcita/editarcita.component';
+import { NuevacitaComponent } from './components/forms/nuevacita/nuevacita.component';
+import { NuevoafiliadoComponent } from './components/forms/nuevoafiliado/nuevoafiliado.component';
+import { EditarafiliadoComponent } from './components/forms/editarafiliado/editarafiliado.component';
 
 
 @NgModule({
@@ -30,6 +34,10 @@ import { EditarpruebaComponent } from './components/forms/editarprueba/editarpru
     AfiliadosComponent,
     NuevapruebaComponent,
     EditarpruebaComponent,
+    EditarcitaComponent,
+    NuevacitaComponent,
+    NuevoafiliadoComponent,
+    EditarafiliadoComponent,
   ],
   imports: [
     BrowserModule,

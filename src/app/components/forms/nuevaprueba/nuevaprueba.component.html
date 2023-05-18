@@ -1,14 +1,16 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 
 <form class="example-form" [formGroup]="pruebasForm" onsubmit="crearTest()">
-  <mat-form-field>
+  <mat-form-field class="nameInput">
     <mat-label for="name">Nombre: </mat-label>
-    <input type="text" required="" matInput formControlName="name" />
+    <input type="text" required matInput formControlName="name" />
   </mat-form-field>
-  <mat-form-field>
+
+  <mat-form-field class="descriptionInput">
     <mat-label for="description">Descripción: </mat-label>
     <input type="text" required matInput formControlName="description" />
   </mat-form-field>
+
   <div class="example-button-row">
     <button mat-raised-button color="primary" type="submit">GUARDAR</button>
     <button mat-raised-button color="warn" type="reset">CANCELAR</button>

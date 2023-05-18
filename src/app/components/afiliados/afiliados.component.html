@@ -1,6 +1,11 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 <div class="container">
-  <mat-icon style="margin-right: 5px; cursor: pointer">add_box</mat-icon>
+  <mat-icon
+    style="margin-right: 5px; cursor: pointer"
+    [routerLink]="['nuevo']"
+    routerLinkActive="router-link-active"
+    >add_box</mat-icon
+  >
   <p style="margin-top: 3px">Nuevo Afiliado</p>
 </div>
 

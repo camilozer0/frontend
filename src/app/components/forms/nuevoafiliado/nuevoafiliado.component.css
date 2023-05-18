@@ -16,11 +16,16 @@
 }
 
 .nameInput {
-  width: 20vw;
+  width: 30vw;
   margin-right: 30px;
 }
 
-.descriptionInput {
-  width: 60vw;
+.ageInput {
+  width: 10vw;
+  margin-right: 30px;
+}
+
+.emailInput {
+  width: 40vw;
   margin-right: 30px;
 }
