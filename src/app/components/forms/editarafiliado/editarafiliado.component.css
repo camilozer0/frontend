@@ -1,0 +1,31 @@
+.example-form {
+  width: 90vw;
+  margin-top: 20px;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: right;
+  height: 16vh;
+  align-items: end;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 12px;
+}
+
+.nameInput {
+  width: 30vw;
+  margin-right: 30px;
+}
+
+.ageInput {
+  width: 10vw;
+  margin-right: 30px;
+}
+
+.emailInput {
+  width: 40vw;
+  margin-right: 30px;
+}

@@ -1,21 +1,21 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 
 <form class="example-form" [formGroup]="citasForm" onsubmit="crearAfiliado()">
-  <mat-form-field class="dateInput">
+  <mat-form-field class="inputStyle">
     <mat-label>Seleccione fecha</mat-label>
     <input type="date" required matInput formControlName="date" />
     <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
     <mat-datepicker #date></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field class="timeInput">
+  <mat-form-field class="inputStyle">
     <mat-label>Seleccione hora</mat-label>
     <input type="time" required matInput formControlName="time" />
     <mat-datepicker-toggle matSuffix [for]="time"></mat-datepicker-toggle>
     <mat-datepicker #time></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field class="idtestInput">
+  <mat-form-field class="inputStyle">
     <mat-label>id Prueba</mat-label>
     <mat-select required formControlName="idTest">
       <mat-option *ngFor="let food of foods" [value]="food.value">
@@ -24,7 +24,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field class="idafInput">
+  <mat-form-field class="inputStyle">
     <mat-label>id Afiliado</mat-label>
     <mat-select required formControlName="idAffiliate">
       <mat-option *ngFor="let food of foods" [value]="food.value">

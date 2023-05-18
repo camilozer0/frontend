@@ -8,6 +8,9 @@ import { AfiliadosComponent } from '../afiliados/afiliados.component';
 import { NuevapruebaComponent } from '../forms/nuevaprueba/nuevaprueba.component';
 import { NuevoafiliadoComponent } from '../forms/nuevoafiliado/nuevoafiliado.component';
 import { NuevacitaComponent } from '../forms/nuevacita/nuevacita.component';
+import { EditarcitaComponent } from '../forms/editarcita/editarcita.component';
+import { EditarafiliadoComponent } from '../forms/editarafiliado/editarafiliado.component';
+import { EditarpruebaComponent } from '../forms/editarprueba/editarprueba.component';
 
 const routes: Routes = [
   {
@@ -16,11 +19,15 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'citas', component: CitasComponent },
+      { path: 'citas/nueva', component: NuevacitaComponent },
+      { path: 'citas/editar', component: EditarcitaComponent },
       { path: 'pruebas', component: PruebasComponent },
-      { path: 'afiliados', component: AfiliadosComponent },
       { path: 'pruebas/nueva', component: NuevapruebaComponent },
+      { path: 'pruebas/editar', component: EditarpruebaComponent },
+      { path: 'afiliados', component: AfiliadosComponent },
       { path: 'afiliados/nuevo', component: NuevoafiliadoComponent },
-      { path: 'citas/nueva', component: NuevacitaComponent }
+      { path: 'afiliados/editar', component: EditarafiliadoComponent },
+
     ]
   }];
 

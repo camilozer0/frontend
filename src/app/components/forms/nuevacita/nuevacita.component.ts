@@ -23,9 +23,10 @@ export class NuevacitaComponent {
   tituloInicial = 'Citas - Nueva Cita';
 
   citasForm = this.fb.group({
-    name: new FormControl(''),
-    age: new FormControl(''),
-    email: new FormControl('')
+    date: new FormControl(''),
+    time: new FormControl(''),
+    idTest: new FormControl(''),
+    idAffiliate: new FormControl('')
   });
 
   constructor(private fb: FormBuilder) { }

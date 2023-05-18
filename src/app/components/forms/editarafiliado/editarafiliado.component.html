@@ -1,1 +1,31 @@
-<p>editarafiliado works!</p>
+<app-vista-i [titulo]="tituloInicial"></app-vista-i>
+
+<form
+  class="example-form"
+  [formGroup]="afiliadosForm"
+  onsubmit="crearAfiliado()"
+>
+  <mat-form-field class="nameInput">
+    <mat-label for="name">Nombre: </mat-label>
+    <input type="text" required matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field class="ageInput">
+    <mat-label for="age">Edad: </mat-label>
+    <input type="number" required matInput formControlName="age" />
+  </mat-form-field>
+
+  <mat-form-field class="emailInput">
+    <mat-label for="email">Email: </mat-label>
+    <input type="email" required matInput formControlName="email" />
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">GUARDAR</button>
+    <button mat-raised-button color="warn" type="reset">CANCELAR</button>
+  </div>
+</form>
+
+<p>Form Value: {{ afiliadosForm.value | json }}</p>
+
+<p>Form Status: {{ afiliadosForm.status }}</p>

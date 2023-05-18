@@ -1,6 +1,6 @@
 .example-form {
   width: 90vw;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .example-button-row {
@@ -15,12 +15,8 @@
   margin-right: 12px;
 }
 
-.dateInput .timeInput {
+.inputStyle {
   width: 20vw;
   margin-right: 30px;
 }
 
-.idtestInput .idafInput {
-  width: 10vw;
-  margin-right: 30px;
-}
