@@ -1,10 +1,6 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 
-<form
-  class="example-form"
-  [formGroup]="afiliadosForm"
-  onsubmit="crearAfiliado()"
->
+<form class="example-form" [formGroup]="afiliadosForm">
   <mat-form-field class="nameInput">
     <mat-label for="name">Nombre: </mat-label>
     <input type="text" required matInput formControlName="name" />
@@ -21,7 +17,14 @@
   </mat-form-field>
 
   <div class="example-button-row">
-    <button mat-raised-button color="primary" type="submit">GUARDAR</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="openDialog()"
+    >
+      GUARDAR
+    </button>
     <button mat-raised-button color="warn" type="reset">CANCELAR</button>
   </div>
 </form>

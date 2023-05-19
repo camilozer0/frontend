@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmdComponent } from '../../shared/confirmd/confirmd.component';
 
 
 @Component({
@@ -20,10 +22,23 @@ export class NuevoafiliadoComponent {
     email: new FormControl('')
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog) { }
 
-  crearAfiliado() {
+  crearAfiliado(): void {
 
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(ConfirmdComponent, {
+      width: '200px',
+      height: '120px',
+      data: 'esta seguro?'
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        console.log('borrar afiliado')
+      }
+    });
+  }
 }

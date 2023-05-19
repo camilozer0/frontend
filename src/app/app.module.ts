@@ -19,6 +19,7 @@ import { EditarcitaComponent } from './components/forms/editarcita/editarcita.co
 import { NuevacitaComponent } from './components/forms/nuevacita/nuevacita.component';
 import { NuevoafiliadoComponent } from './components/forms/nuevoafiliado/nuevoafiliado.component';
 import { EditarafiliadoComponent } from './components/forms/editarafiliado/editarafiliado.component';
+import { ConfirmdComponent } from './components/shared/confirmd/confirmd.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { EditarafiliadoComponent } from './components/forms/editarafiliado/edita
     NuevacitaComponent,
     NuevoafiliadoComponent,
     EditarafiliadoComponent,
+    ConfirmdComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { EditarafiliadoComponent } from './components/forms/editarafiliado/edita
     BrowserAnimationsModule,
     MaterialModule,
   ],
+  entryComponents: [ConfirmdComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
