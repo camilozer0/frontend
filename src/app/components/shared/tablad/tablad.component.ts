@@ -20,6 +20,5 @@ export class TabladComponent implements OnInit {
 
   printme() {
     this.totalC = this.headers.concat(this.newC);
-    console.log(this.totalC);
   }
 }

@@ -14,7 +14,7 @@ export class AfiliadosComponent implements OnInit {
   public afiliados: any[] = [];
 
   public colQ: any[] = ['id', 'name', 'age', 'email'];
-  public colN: any[] = ['id', 'name', 'age', 'email', 'icons'];
+
 
 
   constructor(private afiliadoService: AfiliadoService) { }

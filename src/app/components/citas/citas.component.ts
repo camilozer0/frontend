@@ -14,7 +14,6 @@ export class CitasComponent {
   public citas: Cita[] = [];
   public citas2: any[] = [];
   public colQ: any[] = ['id', 'date', 'hour', 'idTest', 'idAffiliate'];
-  public colN: any[] = ['id', 'date', 'hour', 'idTest', 'idAffiliate', 'icons'];
 
   constructor(private citasServices: CitaService) { }
 
