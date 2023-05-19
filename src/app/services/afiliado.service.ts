@@ -41,7 +41,8 @@ export class AfiliadoService {
     //return this.http.get<Afiliado[]>('http://localhost:8080/api/controller/Affiliate');
   }
 
-  postAfiliado(affiliate: any): Observable<Afiliado> {
+  postAfiliado(affiliate: Afiliado): Observable<Afiliado> {
+    console.log(affiliate);
     return this.http.post<Afiliado>(`${this.baseUrlAffiliates}/Affiliate`, affiliate, { headers: this.headers });
 
   }
