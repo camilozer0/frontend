@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmdComponent } from '../../shared/confirmd/confirmd.component';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { Afiliado } from 'src/app/models/afiliado';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -12,9 +13,6 @@ import { Afiliado } from 'src/app/models/afiliado';
   styleUrls: ['./nuevoafiliado.component.css']
 })
 export class NuevoafiliadoComponent implements OnInit {
-
-  selectedValue: string = '';
-  selectedCar: string = '';
 
   tituloInicial = 'Afiliados - Nuevo Afiliado';
 
@@ -25,12 +23,16 @@ export class NuevoafiliadoComponent implements OnInit {
   };
 
   afiliadosForm = this.fb.group({
-    name: new FormControl(''),
-    age: new FormControl(''),
-    email: new FormControl('')
+    name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+    age: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
+    email: new FormControl('', [Validators.required, Validators.email])
   });
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, private afiliadoService: AfiliadoService) { }
+  constructor(private fb: FormBuilder,
+    public dialog: MatDialog,
+    private afiliadoService: AfiliadoService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void { }
 
@@ -52,12 +54,18 @@ export class NuevoafiliadoComponent implements OnInit {
     this.aff.age = data.value.age;
     this.aff.email = data.value.email;
 
-    console.log(this.aff);
 
     this.afiliadoService.postAfiliado(this.aff).subscribe(response => {
       this.aff = response;
       console.log(this.aff)
     });
+
+    this.afiliadosForm.reset;
+    this.volverRuta();
+  }
+
+  volverRuta() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }
