@@ -1,6 +1,10 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 
-<form class="example-form" [formGroup]="afiliadosForm">
+<form
+  class="example-form"
+  [formGroup]="afiliadosForm"
+  (onsubmit)="crearAfiliado()"
+>
   <mat-form-field class="nameInput">
     <mat-label for="name">Nombre: </mat-label>
     <input type="text" required matInput formControlName="name" />

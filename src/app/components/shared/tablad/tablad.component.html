@@ -6,7 +6,7 @@
     </ng-container>
 
     <ng-container matColumnDef="icons">
-      <th mat-header-cell *matHeaderCellDef>icons</th>
+      <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef>
         <mat-icon
           style="margin-right: 5px; cursor: pointer"
@@ -23,7 +23,7 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="colNumber"></tr>
-    <tr mat-row *matRowDef="let element; columns: colNumber"></tr>
+    <tr mat-header-row *matHeaderRowDef="totalC"></tr>
+    <tr mat-row *matRowDef="let element; columns: totalC"></tr>
   </table>
 </div>

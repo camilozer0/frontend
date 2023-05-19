@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Afiliado } from '../models/afiliado';
@@ -26,16 +26,23 @@ export class AfiliadoService {
 
   constructor(private http: HttpClient) { }
 
+  private headers: HttpHeaders = new HttpHeaders({ 'content-type': 'application/json' })
+
+  AfiliadoPost = {
+    name: '',
+    age: '',
+    email: ''
+  }
+
+
 
   getAfiliado(): Observable<Afiliado[]> {
-
-    // consumir el microservicio
-
-    //return this.ELEMENT_ONE.slice();
-
     return this.http.get<Afiliado[]>(`${this.baseUrlAffiliates}/Affiliate`);
     //return this.http.get<Afiliado[]>('http://localhost:8080/api/controller/Affiliate');
+  }
 
+  postAfiliado(affiliate: any): Observable<Afiliado> {
+    return this.http.post<Afiliado>(`${this.baseUrlAffiliates}/Affiliate`, affiliate, { headers: this.headers });
 
   }
 
