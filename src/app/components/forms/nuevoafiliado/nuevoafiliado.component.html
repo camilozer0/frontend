@@ -4,29 +4,38 @@
   class="example-form"
   [formGroup]="afiliadosForm"
   (ngSubmit)="crearAfiliado(afiliadosForm)"
+  novalidate
+  autocomplete="false"
 >
   <mat-form-field class="nameInput">
     <mat-label for="name">Nombre: </mat-label>
-    <input type="text" required matInput formControlName="name" />
+    <input type="text" matInput formControlName="name" />
   </mat-form-field>
 
   <mat-form-field class="ageInput">
     <mat-label for="age">Edad: </mat-label>
-    <input type="number" required matInput formControlName="age" />
+    <input type="number" matInput formControlName="age" />
   </mat-form-field>
 
   <mat-form-field class="emailInput">
     <mat-label for="email">Email: </mat-label>
-    <input type="email" required matInput formControlName="email" />
+    <input type="email" matInput formControlName="email" />
   </mat-form-field>
 
   <div class="example-button-row">
-    <button mat-raised-button color="primary" type="submit">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="afiliadosForm.invalid"
+    >
       <!--     (click)="openDialog()"
  -->
       GUARDAR
     </button>
-    <button mat-raised-button color="warn" type="reset">CANCELAR</button>
+    <button mat-raised-button color="warn" type="reset" (click)="volverRuta()">
+      CANCELAR
+    </button>
   </div>
 </form>
 

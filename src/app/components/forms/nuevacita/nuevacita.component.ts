@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Afiliado } from 'src/app/models/afiliado';
+import { Cita } from 'src/app/models/cita';
+import { Test } from 'src/app/models/test';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Food {
   value: number;
@@ -20,19 +24,56 @@ export class NuevacitaComponent {
     { value: 3, viewValue: 3 }
   ];
 
+  public test: Test = {
+    id: 0,
+    name: '',
+    description: ''
+  }
+
+  public aff: Afiliado = {
+    id: 0,
+    name: '',
+    age: 0,
+    email: ''
+  }
+
+  public app: Cita = {
+    date: '',
+    hour: '',
+    idTest: this.test,
+    idAffiliate: this.aff
+  }
+
   tituloInicial = 'Citas - Nueva Cita';
 
   citasForm = this.fb.group({
-    date: new FormControl(''),
-    time: new FormControl(''),
-    idTest: new FormControl(''),
-    idAffiliate: new FormControl('')
+    date: new FormControl('', Validators.required),
+    time: new FormControl('', Validators.required),
+    idTest: new FormControl('', Validators.required),
+    idAffiliate: new FormControl('', Validators.required)
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router,
+    private route: ActivatedRoute) { }
 
-  crearCita() {
+  crearCita(data: any) {
+    this.app.date = data.value.name;
+    this.app.hour = data.value.age;
+    this.app.idTest.id = data.value.idTest;
+    this.app.idAffiliate.id = data.value.idAffiliate
 
+
+    /* this.afiliadoService.postAfiliado(this.aff).subscribe(response => {
+      this.aff = response;
+      console.log(this.aff) */
+    /* }); */
+
+    this.citasForm.reset;
+    this.volverRuta();
+  }
+
+  volverRuta() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }
