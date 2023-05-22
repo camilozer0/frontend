@@ -28,15 +28,7 @@ export class AfiliadoService {
 
   private headers: HttpHeaders = new HttpHeaders({ 'content-type': 'application/json' })
 
-  AfiliadoPost = {
-    name: '',
-    age: '',
-    email: ''
-  }
-
-
-
-  getAfiliado(): Observable<Afiliado[]> {
+  getAfiliados(): Observable<Afiliado[]> {
     return this.http.get<Afiliado[]>(`${this.baseUrlAffiliates}/Affiliate`);
     //return this.http.get<Afiliado[]>('http://localhost:8080/api/controller/Affiliate');
   }
@@ -45,6 +37,15 @@ export class AfiliadoService {
     console.log(affiliate);
     return this.http.post<Afiliado>(`${this.baseUrlAffiliates}/Affiliate`, affiliate, { headers: this.headers });
 
+  }
+
+  putAfiliado(affiliate: Afiliado): Observable<Afiliado> {
+    console.log(affiliate);
+    return this.http.put<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/{affiliate.id}`, affiliate, { headers: this.headers })
+  }
+
+  getAfiliado(idAff: number): Observable<Afiliado> {
+    return this.http.get<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/{idAff}`)
   }
 
   /*  getAfiliado(): Observable {

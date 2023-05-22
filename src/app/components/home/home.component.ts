@@ -125,7 +125,6 @@ export class HomeComponent implements OnInit {
 
     this.afiliadoService.getAfiliado().subscribe(response => {
       this.afiliados = response;
-      console.log(response)
     });
   }
 

@@ -26,8 +26,7 @@ const routes: Routes = [
       { path: 'pruebas/editar', component: EditarpruebaComponent },
       { path: 'afiliados', component: AfiliadosComponent },
       { path: 'afiliados/nuevo', component: NuevoafiliadoComponent },
-      { path: 'afiliados/editar', component: EditarafiliadoComponent },
-
+      { path: 'afiliados/editar/:id', component: EditarafiliadoComponent },
     ]
   }];
 

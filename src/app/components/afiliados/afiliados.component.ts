@@ -15,8 +15,6 @@ export class AfiliadosComponent implements OnInit {
 
   public colQ: any[] = ['id', 'name', 'age', 'email'];
 
-
-
   constructor(private afiliadoService: AfiliadoService) { }
 
   ngOnInit(): void {
@@ -24,8 +22,7 @@ export class AfiliadosComponent implements OnInit {
   }
 
   cargarAfiliado() {
-
-    this.afiliadoService.getAfiliado().subscribe(response => {
+    this.afiliadoService.getAfiliados().subscribe(response => {
       this.afiliados = response;
       console.log(response)
     });

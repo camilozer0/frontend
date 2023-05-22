@@ -7,15 +7,18 @@
 
     <ng-container matColumnDef="icons">
       <th mat-header-cell *matHeaderCellDef>Opciones</th>
-      <td mat-cell *matCellDef>
+      <td mat-cell *matCellDef="let element">
         <mat-icon
-          style="margin-right: 5px; cursor: pointer"
-          [routerLink]="['editar']"
+          style="color: slateblue"
+          class="icon1"
+          [routerLink]="['editar/' + element.id]"
           routerLinkActive="router-link-active"
+          (click)="editEl(element.id)"
           >update</mat-icon
         >
         <mat-icon
-          style="margin-right: 5px; cursor: pointer"
+          style="color: brown"
+          class="icon1"
           [routerLink]="['borrar']"
           routerLinkActive="router-link-active"
           >delete_outline</mat-icon

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Test } from 'src/app/models/test';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tablad',
@@ -15,10 +15,16 @@ export class TabladComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.printme();
+    this.addColumn();
   }
 
-  printme() {
+  constructor(private router: Router) { }
+
+  addColumn() {
     this.totalC = this.headers.concat(this.newC);
+  }
+
+  editEl(idEl: number) {
+    this.router.navigate(['dashboard/afiliados/editar', idEl]);
   }
 }
