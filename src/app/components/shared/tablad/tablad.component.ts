@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AfiliadoService } from 'src/app/services/afiliado.service';
 
 @Component({
   selector: 'app-tablad',
@@ -18,7 +19,7 @@ export class TabladComponent implements OnInit {
     this.addColumn();
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private afiliadoService: AfiliadoService) { }
 
   addColumn() {
     this.totalC = this.headers.concat(this.newC);
@@ -26,5 +27,12 @@ export class TabladComponent implements OnInit {
 
   editEl(idEl: number) {
     this.router.navigate(['dashboard/afiliados/editar', idEl]);
+  }
+
+  borrarEl(idEl: number) {
+    this.afiliadoService.deleteAfiliado(idEl).subscribe((response: { value: any; }) => {
+      console.log(response)
+    });
+    this.router.navigate(['dashboard/afiliados']);
   }
 }

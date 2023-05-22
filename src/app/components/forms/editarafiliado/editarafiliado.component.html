@@ -2,8 +2,8 @@
 
 <form
   class="example-form"
-  [formGroup]="afiliadosForm"
-  onsubmit="editarAfiliado()"
+  [formGroup]="afiliadoForm"
+  (ngSubmit)="editarAfiliado(afiliadoForm)"
 >
   <mat-form-field class="nameInput">
     <mat-label for="name">Nombre: </mat-label>
@@ -26,6 +26,6 @@
   </div>
 </form>
 
-<p>Form Value: {{ afiliadosForm.value | json }}</p>
+<p>Form Value: {{ afiliadoForm.value | json }}</p>
 
-<p>Form Status: {{ afiliadosForm.status }}</p>
+<p>Form Status: {{ afiliadoForm.status }}</p>

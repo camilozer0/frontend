@@ -41,14 +41,18 @@ export class AfiliadoService {
 
   putAfiliado(affiliate: Afiliado): Observable<Afiliado> {
     console.log(affiliate);
-    return this.http.put<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/{affiliate.id}`, affiliate, { headers: this.headers })
+    return this.http.put<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/${affiliate.id}`, affiliate, { headers: this.headers })
   }
 
   getAfiliado(idAff: number): Observable<Afiliado> {
     return this.http.get<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/${idAff}`)
   }
 
-  /*  getAfiliado(): Observable {
-     this.http.get("")
-   } */
+
+  deleteAfiliado(idAff: number): Observable<any> {
+    console.log(`${this.baseUrlAffiliates}/Affiliate/${idAff}`);
+    return this.http.delete(`${this.baseUrlAffiliates}/Affiliate/${idAff}`, { headers: this.headers });
+
+  }
+
 }

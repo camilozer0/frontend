@@ -16,7 +16,7 @@ export class EditarafiliadoComponent implements OnInit {
   /*   selectedValue: string = '';
     selectedCar: string = ''; */
 
-  afiliadosForm = this.fb.group({
+  afiliadoForm = this.fb.group({
     name: new FormControl(''),
     age: new FormControl(''),
     email: new FormControl('')
@@ -42,16 +42,24 @@ export class EditarafiliadoComponent implements OnInit {
 
   traerAfiliado() {
     this.afiliadoServide.getAfiliado(this.idElement).subscribe(afEditar => {
-      this.afiliadosForm = this.fb.group({
+      this.afiliadoForm = this.fb.group({
         name: [afEditar.name, Validators.required],
         age: [afEditar.age.toString(), Validators.required],
         email: [afEditar.email, Validators.required],
-      })
+      });
+      this.editarAf.id = afEditar.id;
     })
   }
 
-  editarAfiliado(afSeleccionado: Afiliado) {
-    this.editarAf = afSeleccionado;
+  editarAfiliado(afiliadoForm: any) {
+    //this.editarAf.id = afiliadoForm.value.id;
+    this.editarAf.name = afiliadoForm.value.name;
+    this.editarAf.age = afiliadoForm.value.age;
+    this.editarAf.email = afiliadoForm.value.email;
+    console.log(afiliadoForm)
+    this.afiliadoServide.putAfiliado(this.editarAf).subscribe(response => {
+      console.log(response);
+    })
   }
 
 }
