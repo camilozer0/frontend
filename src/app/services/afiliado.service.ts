@@ -45,7 +45,7 @@ export class AfiliadoService {
   }
 
   getAfiliado(idAff: number): Observable<Afiliado> {
-    return this.http.get<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/{idAff}`)
+    return this.http.get<Afiliado>(`${this.baseUrlAffiliates}/Affiliate/${idAff}`)
   }
 
   /*  getAfiliado(): Observable {

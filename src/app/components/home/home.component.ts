@@ -118,12 +118,11 @@ export class HomeComponent implements OnInit {
   constructor(private afiliadoService: AfiliadoService) { }
 
   ngOnInit(): void {
-    this.cargarAfiliado();
+    this.cargarAfiliados();
   }
 
-  cargarAfiliado() {
-
-    this.afiliadoService.getAfiliado().subscribe(response => {
+  cargarAfiliados() {
+    this.afiliadoService.getAfiliados().subscribe(response => {
       this.afiliados = response;
     });
   }
