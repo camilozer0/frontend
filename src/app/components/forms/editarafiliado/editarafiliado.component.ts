@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
@@ -24,7 +24,10 @@ export class EditarafiliadoComponent implements OnInit {
 
   public idElement: number = 0;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private afiliadoServide: AfiliadoService) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private afiliadoServide: AfiliadoService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -60,6 +63,7 @@ export class EditarafiliadoComponent implements OnInit {
     this.afiliadoServide.putAfiliado(this.editarAf).subscribe(response => {
       console.log(response);
     })
+    this.router.navigate(['../../'], { relativeTo: this.route });
   }
 
 }

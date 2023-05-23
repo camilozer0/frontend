@@ -18,13 +18,13 @@ export class AfiliadosComponent implements OnInit {
   constructor(private afiliadoService: AfiliadoService) { }
 
   ngOnInit(): void {
-    this.cargarAfiliado();
+    this.cargarAfiliados();
   }
 
-  cargarAfiliado() {
+  cargarAfiliados() {
     this.afiliadoService.getAfiliados().subscribe(response => {
       this.afiliados = response;
-      console.log(response)
+      console.log(response);
     });
   }
 
