@@ -49,10 +49,10 @@ export class NuevoafiliadoComponent implements OnInit {
     });
   }
 
-  crearAfiliado(data: any): void {
-    this.aff.name = data.value.name;
-    this.aff.age = data.value.age;
-    this.aff.email = data.value.email;
+  crearAfiliado(dataAff: any): void {
+    this.aff.name = dataAff.value.name;
+    this.aff.age = dataAff.value.age;
+    this.aff.email = dataAff.value.email;
 
 
     this.afiliadoService.postAfiliado(this.aff).subscribe(response => {

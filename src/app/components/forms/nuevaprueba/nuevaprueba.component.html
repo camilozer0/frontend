@@ -1,6 +1,10 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 
-<form class="example-form" [formGroup]="pruebasForm" onsubmit="crearTest()">
+<form
+  class="example-form"
+  [formGroup]="pruebasForm"
+  (ngSubmit)="crearTest(pruebasForm)"
+>
   <mat-form-field class="nameInput">
     <mat-label for="name">Nombre: </mat-label>
     <input type="text" required matInput formControlName="name" />
