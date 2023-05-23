@@ -58,8 +58,6 @@ export class NuevoafiliadoComponent implements OnInit {
       this.afiliadosForm.reset;
       this.volverRuta();
     });
-
-
   }
 
   volverRuta() {
