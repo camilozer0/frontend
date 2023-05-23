@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Test } from 'src/app/models/test';
+import { PruebaService } from 'src/app/services/prueba.service';
 
 @Component({
   selector: 'app-nuevaprueba',
@@ -23,11 +24,23 @@ export class NuevapruebaComponent {
   });
 
   constructor(private fb: FormBuilder,
-    private route: Router,
-    private router: ActivatedRoute) { }
+    private testService: PruebaService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
-  crearTest(dataTest: any) {
+  crearTest(dataTest: any): void {
+    this.test.name = dataTest.value.name;
+    this.test.description = dataTest.value.description;
+    this.testService.postTest(this.test).subscribe(response => {
+      this.test = response;
+      console.log(this.test);
+      this.pruebasForm.reset();
+      this.volverRuta();
+    })
+  }
 
+  volverRuta() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }

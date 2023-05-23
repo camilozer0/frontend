@@ -53,15 +53,13 @@ export class NuevoafiliadoComponent implements OnInit {
     this.aff.name = dataAff.value.name;
     this.aff.age = dataAff.value.age;
     this.aff.email = dataAff.value.email;
-
-
     this.afiliadoService.postAfiliado(this.aff).subscribe(response => {
       this.aff = response;
-      console.log(this.aff)
+      this.afiliadosForm.reset;
+      this.volverRuta();
     });
 
-    this.afiliadosForm.reset;
-    this.volverRuta();
+
   }
 
   volverRuta() {

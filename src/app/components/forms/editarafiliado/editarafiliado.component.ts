@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 
@@ -11,10 +10,8 @@ import { AfiliadoService } from 'src/app/services/afiliado.service';
   styleUrls: ['./editarafiliado.component.css']
 })
 export class EditarafiliadoComponent implements OnInit {
-  tituloInicial = 'Afiliados - Nuevo Afiliado';
 
-  /*   selectedValue: string = '';
-    selectedCar: string = ''; */
+  tituloInicial = 'Afiliados - Nuevo Afiliado';
 
   afiliadoForm = this.fb.group({
     name: new FormControl(''),
@@ -23,6 +20,13 @@ export class EditarafiliadoComponent implements OnInit {
   });
 
   public idElement: number = 0;
+
+  public editarAf: Afiliado = {
+    id: 0,
+    name: '',
+    age: 0,
+    email: ''
+  };
 
   constructor(private fb: FormBuilder,
     private router: Router,
@@ -34,13 +38,6 @@ export class EditarafiliadoComponent implements OnInit {
       this.idElement = params['id'];
     });
     this.traerAfiliado();
-  };
-
-  public editarAf: Afiliado = {
-    id: 0,
-    name: '',
-    age: 0,
-    email: ''
   };
 
   traerAfiliado() {
