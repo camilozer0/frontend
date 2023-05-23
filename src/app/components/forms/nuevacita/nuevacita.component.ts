@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CitaService } from 'src/app/services/cita.service';
 import { PruebaService } from 'src/app/services/prueba.service';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-nuevacita',
@@ -33,7 +34,7 @@ export class NuevacitaComponent implements OnInit {
     hour: '',
     idTest: this.test,
     idAffiliate: this.aff
-  }
+  };
 
   public affOption: Afiliado[] = [];
 
@@ -43,7 +44,7 @@ export class NuevacitaComponent implements OnInit {
 
   citasForm = this.fb.group({
     date: new FormControl('', Validators.required),
-    time: new FormControl('', Validators.required),
+    hour: new FormControl('', Validators.required),
     idTest: new FormControl('', Validators.required),
     idAffiliate: new FormControl('', Validators.required)
   });
@@ -74,20 +75,21 @@ export class NuevacitaComponent implements OnInit {
     });
   }
 
-  crearCita(data: any) {
-    this.app.date = data.value.name;
-    this.app.hour = data.value.age;
-    this.app.idTest.id = data.value.idTest;
-    this.app.idAffiliate.id = data.value.idAffiliate
+  crearCita(dataCita: any) {
+    this.app.date = moment(dataCita.value.date).format('DD/MM/YYYY');
+    this.app.hour = moment(dataCita.value.hour, 'h:mm A').format('HH:mm');
+    this.app.idTest.id = dataCita.value.idTest;
+    this.app.idAffiliate.id = dataCita.value.idAffiliate;
+
+    console.log(this.app);
 
 
-    /* this.afiliadoService.postAfiliado(this.aff).subscribe(response => {
-      this.aff = response;
-      console.log(this.aff) */
-    /* }); */
-
-    this.citasForm.reset;
-    this.volverRuta();
+    this.appService.postCita(this.app).subscribe(response => {
+      this.app = response;
+      console.log(this.aff);
+      this.citasForm.reset;
+      this.volverRuta();
+    });
   }
 
   volverRuta() {
