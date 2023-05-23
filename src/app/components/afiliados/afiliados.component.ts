@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 
@@ -7,7 +7,7 @@ import { AfiliadoService } from 'src/app/services/afiliado.service';
   templateUrl: './afiliados.component.html',
   styleUrls: ['./afiliados.component.css']
 })
-export class AfiliadosComponent implements OnInit {
+export class AfiliadosComponent implements OnInit, OnChanges {
 
   tituloInicial = 'Afiliados';
 
@@ -16,6 +16,10 @@ export class AfiliadosComponent implements OnInit {
   public colQ: any[] = ['id', 'name', 'age', 'email'];
 
   constructor(private afiliadoService: AfiliadoService) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.cargarAfiliados();
+  }
 
   ngOnInit(): void {
     this.cargarAfiliados();

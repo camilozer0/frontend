@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 
@@ -31,8 +31,10 @@ export class TabladComponent implements OnInit {
 
   borrarEl(idEl: number) {
     this.afiliadoService.deleteAfiliado(idEl).subscribe((response: { value: any; }) => {
-      console.log(response)
+      console.log(response);
+      this.router.navigate(['dashboard/afiliados']);
+      window.location.reload();
     });
-    this.router.navigate(['dashboard/afiliados']);
+
   }
 }
