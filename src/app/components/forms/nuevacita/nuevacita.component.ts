@@ -1,28 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Afiliado } from 'src/app/models/afiliado';
 import { Cita } from 'src/app/models/cita';
 import { Test } from 'src/app/models/test';
 import { ActivatedRoute, Router } from '@angular/router';
-
-export interface Food {
-  value: number;
-  viewValue: number;
-}
-
+import { CitaService } from 'src/app/services/cita.service';
+import { PruebaService } from 'src/app/services/prueba.service';
+import { AfiliadoService } from 'src/app/services/afiliado.service';
 
 @Component({
   selector: 'app-nuevacita',
   templateUrl: './nuevacita.component.html',
   styleUrls: ['./nuevacita.component.css']
 })
-export class NuevacitaComponent {
-
-  foods: Food[] = [
-    { value: 1, viewValue: 1 },
-    { value: 2, viewValue: 2 },
-    { value: 3, viewValue: 3 }
-  ];
+export class NuevacitaComponent implements OnInit {
 
   public test: Test = {
     id: 0,
@@ -44,6 +35,10 @@ export class NuevacitaComponent {
     idAffiliate: this.aff
   }
 
+  public affOption: Afiliado[] = [];
+
+  public testOption: Test[] = [];
+
   tituloInicial = 'Citas - Nueva Cita';
 
   citasForm = this.fb.group({
@@ -53,8 +48,31 @@ export class NuevacitaComponent {
     idAffiliate: new FormControl('', Validators.required)
   });
 
-  constructor(private fb: FormBuilder, private router: Router,
-    private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private appService: CitaService,
+    private testService: PruebaService,
+    private affService: AfiliadoService) { }
+
+  ngOnInit(): void {
+    this.afiliados();
+    this.tests();
+  }
+
+  afiliados() {
+    this.affService.getAfiliados().subscribe(response => {
+      this.affOption = response;
+      console.log(this.affOption)
+    });
+  }
+
+  tests() {
+    this.testService.getTests().subscribe(response => {
+      this.testOption = response;
+      console.log(this.testOption);
+    });
+  }
 
   crearCita(data: any) {
     this.app.date = data.value.name;

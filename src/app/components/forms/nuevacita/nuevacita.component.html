@@ -4,10 +4,9 @@
   class="example-form"
   [formGroup]="citasForm"
   (ngSubmit)="crearCita(citasForm)"
-  novalidate
   autocomplete="false"
 >
-  <mat-form-field>
+  <mat-form-field class="inputStyle">
     <mat-label>Seleccione fecha</mat-label>
 
     <input matInput [matDatepicker]="picker" required formControlName="date" />
@@ -15,15 +14,7 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <!--
   <mat-form-field class="inputStyle">
-    <mat-label>Seleccione fecha</mat-label>
-    <input type="date" required matInput formControlName="date" />
-    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-    <mat-datepicker #date></mat-datepicker>
-  </mat-form-field> -->
-
-  <mat-form-field>
     <mat-label>Seleccione hora</mat-label>
     <input
       matInput
@@ -38,18 +29,11 @@
   </mat-form-field>
   <ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
 
-  <!--   <mat-form-field class="inputStyle">
-    <mat-label>Seleccione hora</mat-label>
-    <input type="time" required matInput formControlName="time" />
-    <mat-datepicker-toggle matSuffix [for]="time"></mat-datepicker-toggle>
-    <mat-datepicker #time></mat-datepicker>
-  </mat-form-field> -->
-
   <mat-form-field class="inputStyle">
     <mat-label>id Prueba</mat-label>
     <mat-select required formControlName="idTest">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{ food.viewValue }}
+      <mat-option *ngFor="let testEl of testOption" [value]="testEl.id">
+        {{ testEl.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -57,8 +41,8 @@
   <mat-form-field class="inputStyle">
     <mat-label>id Afiliado</mat-label>
     <mat-select required formControlName="idAffiliate">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{ food.viewValue }}
+      <mat-option *ngFor="let affEl of affOption" [value]="affEl.id">
+        {{ affEl.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
