@@ -20,6 +20,7 @@ import { NuevacitaComponent } from './components/forms/nuevacita/nuevacita.compo
 import { NuevoafiliadoComponent } from './components/forms/nuevoafiliado/nuevoafiliado.component';
 import { EditarafiliadoComponent } from './components/forms/editarafiliado/editarafiliado.component';
 import { ConfirmdComponent } from './components/shared/confirmd/confirmd.component';
+import { TablacitasComponent } from './components/tablacitas/tablacitas.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ConfirmdComponent } from './components/shared/confirmd/confirmd.compone
     NuevoafiliadoComponent,
     EditarafiliadoComponent,
     ConfirmdComponent,
+    TablacitasComponent,
   ],
   imports: [
     BrowserModule,

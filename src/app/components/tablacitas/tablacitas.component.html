@@ -1,0 +1,52 @@
+<div>
+  <table mat-table [dataSource]="informacion" class="mat-elevation-z8">
+    <!-- Define the columns -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hour">
+      <th mat-header-cell *matHeaderCellDef>Hour</th>
+      <td mat-cell *matCellDef="let element">{{ element.hour }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="id Test">
+      <th mat-header-cell *matHeaderCellDef>id Test</th>
+      <td mat-cell *matCellDef="let element">{{ element.idTest.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="id Affiliate">
+      <th mat-header-cell *matHeaderCellDef>id Affiliate</th>
+      <td mat-cell *matCellDef="let element">{{ element.idAffiliate.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="icons">
+      <th mat-header-cell *matHeaderCellDef>Icons</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon
+          style="color: slateblue"
+          class="icon1"
+          (click)="editEl(element.id)"
+          >update</mat-icon
+        >
+        <mat-icon
+          style="color: brown"
+          class="icon1"
+          (click)="borrarEl(element.id)"
+          >delete_outline</mat-icon
+        >
+      </td>
+    </ng-container>
+
+    <!-- Render the column headers -->
+    <tr mat-header-row *matHeaderRowDef="totalC"></tr>
+    <!-- Render the table rows -->
+    <tr mat-row *matRowDef="let element; columns: totalC"></tr>
+  </table>
+</div>

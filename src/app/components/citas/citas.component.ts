@@ -12,6 +12,17 @@ export class CitasComponent {
   tituloInicial = "Citas";
 
   public citas: Cita[] = [];
+
+  public citasShow: any[] = [
+    {
+      id: 0,
+      date: '',
+      hour: '',
+      idTest: 0,
+      idAffiliate: 0
+    }
+  ];
+
   public citas2: any[] = [];
   public colQ: any[] = ['id', 'date', 'hour', 'id Test', 'id Affiliate'];
 
@@ -24,6 +35,11 @@ export class CitasComponent {
   cargarAfiliado() {
     this.citasServices.getCitas().subscribe(response => {
       this.citas = response;
+      this.citas2 = response.map(o => Object.values(o)[1]);
+      this.citas2 = response.map(o => Object.values(o)[1]);
+      this.citas2 = response.map(o => Object.values(o)[1]);
+      this.citas2 = response.map(o => Object.values(o)[1]);
+      this.citas2 = response.map(o => Object.values(o)[1]);
 
       //Recordar acá cuadrar la parte de las citas
       console.log(this.citas2 = response.map(o => Object.values(o)[1]));
