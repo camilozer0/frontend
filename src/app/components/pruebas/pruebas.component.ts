@@ -14,6 +14,7 @@ export class PruebasComponent implements OnInit, OnChanges {
 
   public tests: Test[] = [];
   public colQ: any[] = ['id', 'name', 'description'];
+  public optionAff = false;
 
   constructor(private testService: PruebaService,
     private route: ActivatedRoute,

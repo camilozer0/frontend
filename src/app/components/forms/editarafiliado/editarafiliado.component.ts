@@ -64,6 +64,7 @@ export class EditarafiliadoComponent implements OnInit {
   }
 
   volverRuta() {
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    //this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['/dashboard/afiliados']);
   }
 }

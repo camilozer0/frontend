@@ -15,6 +15,8 @@ export class AfiliadosComponent implements OnInit, OnChanges {
 
   public colQ: any[] = ['id', 'name', 'age', 'email'];
 
+  public optionAff = true;
+
   constructor(private afiliadoService: AfiliadoService) { }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -60,6 +60,7 @@ export class EditarpruebaComponent implements OnInit {
   }
 
   volverRuta() {
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    //this.router.navigate(['../../'], { relativeTo: this.route });
+    this.router.navigate(['/dashboard/pruebas']);
   }
 }
