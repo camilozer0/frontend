@@ -2,14 +2,20 @@
 
 <form
   class="example-form"
-  [formGroup]="citasForm"
-  (ngSubmit)="crearCita(citasForm)"
+  [formGroup]="citaForm"
+  (ngSubmit)="crearCita(citaForm)"
   autocomplete="false"
 >
   <mat-form-field class="inputStyle">
     <mat-label>Seleccione fecha</mat-label>
-
-    <input matInput [matDatepicker]="picker" required formControlName="date" />
+    <input
+      matInput
+      [matDatepicker]="picker"
+      name="date"
+      required
+      formControlName="date"
+      readonly
+    />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -22,7 +28,6 @@
       required
       formControlName="hour"
       [ngxMatTimepicker]="pickerA"
-      placeholder="4:00 PM"
       readonly
     />
     <mat-icon matSuffix (click)="pickerA.open()"> watch_later </mat-icon>
@@ -31,7 +36,7 @@
 
   <mat-form-field class="inputStyle">
     <mat-label>id Prueba</mat-label>
-    <mat-select required formControlName="idTest">
+    <mat-select required formControlName="idTest" [value]="initialT">
       <mat-option *ngFor="let testEl of testOption" [value]="testEl.id">
         {{ testEl.name }}
       </mat-option>
@@ -40,7 +45,7 @@
 
   <mat-form-field class="inputStyle">
     <mat-label>id Afiliado</mat-label>
-    <mat-select required formControlName="idAffiliate">
+    <mat-select required formControlName="idAffiliate" [value]="this.initialA">
       <mat-option *ngFor="let affEl of affOption" [value]="affEl.id">
         {{ affEl.name }}
       </mat-option>
@@ -49,10 +54,12 @@
 
   <div class="example-button-row">
     <button mat-raised-button color="primary" type="submit">GUARDAR</button>
-    <button mat-raised-button color="warn" type="reset">CANCELAR</button>
+    <button mat-raised-button color="warn" type="reset" (click)="volverRuta()">
+      CANCELAR
+    </button>
   </div>
 </form>
 
-<p>Form Value: {{ citasForm.value | json }}</p>
+<p>Form Value: {{ citaForm.value | json }}</p>
 
-<p>Form Status: {{ citasForm.status }}</p>
+<p>Form Status: {{ citaForm.status }}</p>

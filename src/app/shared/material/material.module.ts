@@ -35,7 +35,6 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MatSelectModule,
     MatDialogModule,
     NgxMatTimepickerModule
-
   ],
   exports: [
     CommonModule,

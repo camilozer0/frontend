@@ -59,6 +59,7 @@ export class EditarafiliadoComponent implements OnInit {
     console.log(afiliadoForm)
     this.afiliadoServide.putAfiliado(this.editarAf).subscribe(response => {
       console.log(response);
+      this.afiliadoForm.reset();
       this.router.navigate(['../'], { relativeTo: this.route });
     })
   }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
+import { CitaService } from 'src/app/services/cita.service';
 
 @Component({
   selector: 'app-tablacitas',
@@ -19,7 +20,7 @@ export class TablacitasComponent {
     this.addColumn();
   }
 
-  constructor(private router: Router, private afiliadoService: AfiliadoService) { }
+  constructor(private router: Router, private citasService: CitaService) { }
 
   addColumn() {
     this.totalC = this.headers.concat(this.newC);
@@ -31,7 +32,7 @@ export class TablacitasComponent {
   }
 
   borrarEl(idEl: number) {
-    this.afiliadoService.deleteAfiliado(idEl).subscribe((response: { value: any; }) => {
+    this.citasService.deleteCita(idEl).subscribe((response: { value: any; }) => {
       console.log(response);
       this.router.navigate(['dashboard/citas']);
       window.location.reload();

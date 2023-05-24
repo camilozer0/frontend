@@ -30,7 +30,7 @@ export class CitaService {
     return this.http.get<Cita>(`${this.baseUrlCitas}/Appointment/${idCita}`);
   }
 
-  delete(idCita: number): Observable<any> {
+  deleteCita(idCita: number): Observable<any> {
     return this.http.delete(`${this.baseUrlCitas}/Appointment/${idCita}`, { headers: this.headers });
   }
 
