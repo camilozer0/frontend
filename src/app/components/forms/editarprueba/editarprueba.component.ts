@@ -15,7 +15,7 @@ export class EditarpruebaComponent implements OnInit {
 
   pruebaForm = this.fb.group({
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-    description: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')])
+    description: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')])
   });
 
   public idElement: number = 0;
@@ -55,7 +55,7 @@ export class EditarpruebaComponent implements OnInit {
     console.log(pruebaForm)
     this.testService.putTest(this.editTest).subscribe(response => {
       console.log(response);
-      this.router.navigate(['../../'], { relativeTo: this.route });
+      this.volverRuta();
     })
   }
 

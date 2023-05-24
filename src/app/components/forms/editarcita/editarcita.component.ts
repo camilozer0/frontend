@@ -110,7 +110,7 @@ export class EditarcitaComponent implements OnInit {
       this.app = response;
       console.log(this.aff);
       this.citaForm.reset;
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.volverRuta();
     });
   }
 

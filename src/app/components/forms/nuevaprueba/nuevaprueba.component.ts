@@ -20,7 +20,7 @@ export class NuevapruebaComponent {
 
   pruebasForm = this.fb.group({
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-    description: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')])
+    description: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')])
   });
 
   constructor(private fb: FormBuilder,
