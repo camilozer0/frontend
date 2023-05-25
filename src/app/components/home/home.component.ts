@@ -110,8 +110,6 @@ export class HomeComponent implements OnInit {
             uniqueIdT.push(obj);
           }
         }
-        /* const foundCita = appByDate.filter(obj =>
-          appByDate.some(otherObj => obj.idAffiliate.id !== otherObj.idAffiliate.id) */
         if (uniqueIdT !== undefined) {
           this.appointments = uniqueIdT;
           console.log(uniqueIdT);
