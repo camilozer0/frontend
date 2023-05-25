@@ -1,7 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
+import { CitaService } from 'src/app/services/cita.service';
 
 export interface PeriodicElement {
   name: string;
@@ -98,15 +102,24 @@ const ELEMENT_DATA: User[] = [
 
 export class HomeComponent implements OnInit {
 
-
   // El titulo de la vista
   tituloInicial = "Consultas";
 
   public afiliados: Afiliado[] = [];
-
+  public afiliado: Afiliado = {
+    id: 0,
+    name: '',
+    age: 0,
+    email: ''
+  }
 
   minDate = new Date(1920, 0, 1);
-  maxDate = new Date(2020, 0, 1);
+  maxDate = new Date(2024, 0, 1);
+
+  datosForm = this.fb.group({
+    date: new FormControl(''),
+    idAff: new FormControl('')
+  })
 
   title = 'angular-mat-table-example';
   displayedColumns: string[] = ['id', 'name', 'age', 'email'];
@@ -115,7 +128,9 @@ export class HomeComponent implements OnInit {
   datatwo = ELEMENT_DATA;
   columnsToDisplay = ['id', 'name', 'email', 'address'];
 
-  constructor(private afiliadoService: AfiliadoService) { }
+  constructor(private afiliadoService: AfiliadoService,
+    private appService: CitaService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.cargarAfiliados();
@@ -127,7 +142,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
   toggleRow(element: { expanded: boolean; }) {
     // Uncommnet to open only single row at once
     this.afiliados.forEach(row => {
@@ -136,10 +150,23 @@ export class HomeComponent implements OnInit {
     element.expanded = !element.expanded;
   }
 
+
+  byAff(datosForm: FormGroup) {
+    console.log(datosForm.value.idAff);
+    this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByDate => { console.log(appByDate) });
+    this.afiliadoService.getAfiliado(datosForm.value.idAff).subscribe(affShow => {
+      this.afiliado = affShow;
+      console.log(affShow);
+    });
+  }
   /* manageAllRows(flag: boolean) {
     this.afiliados.forEach(row => {
       row.expanded = flag;
     })
   } */
+
+  byDate(datosForm: FormGroup) {
+    console.log(moment(datosForm.value.date).format('DD/MM/YYYY'));
+  }
 
 }

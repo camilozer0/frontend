@@ -1,7 +1,7 @@
 <app-vista-i [titulo]="tituloInicial"></app-vista-i>
 <div class="container">
   <!-- The form -->
-  <form class="example-form">
+  <form class="example-form" [formGroup]="datosForm">
     <!-- date -->
     <mat-form-field class="example-full-width">
       <mat-label>Choose a date</mat-label>
@@ -10,33 +10,49 @@
         [min]="minDate"
         [max]="maxDate"
         [matDatepicker]="picker"
+        formControlName="date"
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <!-- search button date -->
-    <button mat-mini-fab color="primary" class="sizebutton">
+    <button
+      mat-mini-fab
+      color="primary"
+      class="sizebutton"
+      (click)="byDate(datosForm)"
+    >
       <span class="material-icons" style="font-size: 20px"> search </span>
     </button>
+
     <!-- affiliate -->
-    <mat-form-field class="example-full-width">
-      <mat-label>Afiliado</mat-label>
-      <input type="text" matInput autocomplete="off" />
+    <mat-form-field class="inputStyle">
+      <mat-label>id Afiliado</mat-label>
+      <mat-select formControlName="idAff">
+        <mat-option *ngFor="let affEl of afiliados" [value]="affEl.id">
+          {{ affEl.name }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <!-- search button affiliate -->
-    <button mat-mini-fab color="primary" class="sizebutton">
+    <button
+      mat-mini-fab
+      color="primary"
+      class="sizebutton"
+      (click)="byAff(datosForm)"
+    >
       <span class="material-icons" style="font-size: 20px"> search </span>
     </button>
   </form>
 </div>
 
-<div class="wrapper">
-  <h1>Tabla</h1>
+<p>Form Value: {{ datosForm.value | json }}</p>
 
+<div class="wrapper">
   <!-- la tabla home -->
   <table
     mat-table
-    [dataSource]="afiliados"
+    [dataSource]="afiliado"
     multiTemplateDataRows
     class="mat-elevation-z8"
   >
