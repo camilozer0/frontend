@@ -34,8 +34,12 @@ export class CitaService {
     return this.http.delete(`${this.baseUrlCitas}/Appointment/${idCita}`, { headers: this.headers });
   }
 
-  getAppbyAff(idAff: number): Observable<any> {
-    return this.http.get(`${this.baseUrlCitas}/Appointment/Affiliate/${idAff}`, { headers: this.headers })
+  getAppbyAff(idAff: number): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.baseUrlCitas}/Appointment/Affiliate/${idAff}`, { headers: this.headers });
+  }
+
+  getAppByDate(date: string): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.baseUrlCitas}/Appointment/listgroup/${date}`, { headers: this.headers });
   }
 
 }
