@@ -1,20 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatTable } from '@angular/material/table';
 import * as moment from 'moment';
 import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { CitaService } from 'src/app/services/cita.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  expanded: boolean;
-
-}
 
 export interface User {
   id: number;
@@ -102,16 +94,21 @@ const ELEMENT_DATA: User[] = [
 
 export class HomeComponent implements OnInit {
 
+  @ViewChild('maintable') table!: MatTable<any>;
+  @ViewChild('expandedtable') tableE!: MatTable<any>;
+
   // El titulo de la vista
   tituloInicial = "Consultas";
 
   public afiliados: Afiliado[] = [];
-  public afiliado: Afiliado = {
+  public afiliado: Afiliado[] = [{
     id: 0,
-    name: '',
+    name: 'Camilo',
     age: 0,
-    email: ''
-  }
+    email: 'mazorra006@gmail.com'
+  }];
+
+  public dataExpandable: any[] = [];
 
   minDate = new Date(1920, 0, 1);
   maxDate = new Date(2024, 0, 1);
@@ -122,7 +119,10 @@ export class HomeComponent implements OnInit {
   })
 
   title = 'angular-mat-table-example';
-  displayedColumns: string[] = ['id', 'name', 'age', 'email'];
+  headersMain: string[] = ['id', 'name', 'age', 'email'];
+  headersMainExp: string[] = ['option', 'id', 'name', 'age', 'email'];
+
+  colDataExpandible: string[] = ['id', 'date', 'hour', 'idTest', 'testName'];
 
 
   datatwo = ELEMENT_DATA;
@@ -152,11 +152,14 @@ export class HomeComponent implements OnInit {
 
 
   byAff(datosForm: FormGroup) {
-    console.log(datosForm.value.idAff);
-    this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByDate => { console.log(appByDate) });
     this.afiliadoService.getAfiliado(datosForm.value.idAff).subscribe(affShow => {
-      this.afiliado = affShow;
-      console.log(affShow);
+      this.afiliado[0] = affShow;
+      this.table.renderRows();
+    });
+    this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByDate => {
+      this.dataExpandable = appByDate;
+      console.log(this.dataExpandable);
+      this.tableE.renderRows()
     });
   }
   /* manageAllRows(flag: boolean) {
