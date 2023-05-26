@@ -11,13 +11,12 @@ import { PruebaService } from 'src/app/services/prueba.service';
 })
 export class NuevapruebaComponent {
 
+  // Atributos
   tituloInicial = 'Pruebas - Nueva Prueba';
-
   public test: Test = {
     name: '',
     description: ''
-  }
-
+  };
   pruebasForm = this.fb.group({
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
     description: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')])
@@ -28,6 +27,7 @@ export class NuevapruebaComponent {
     private router: Router,
     private route: ActivatedRoute) { }
 
+  // Métodos
   crearTest(dataTest: any): void {
     this.test.name = dataTest.value.name;
     this.test.description = dataTest.value.description;
