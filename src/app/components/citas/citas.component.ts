@@ -9,10 +9,10 @@ import { CitaService } from 'src/app/services/cita.service';
 })
 export class CitasComponent {
 
+
+  // Atributos
   tituloInicial = "Citas";
-
   public citas: Cita[] = [];
-
   public citasShow: any[] = [
     {
       id: 0,
@@ -22,7 +22,6 @@ export class CitasComponent {
       idAffiliate: 0
     }
   ];
-
   public citas2: any[] = [];
   public colQ: any[] = ['id', 'date', 'hour', 'id Test', 'id Affiliate'];
 
@@ -32,6 +31,7 @@ export class CitasComponent {
     this.cargarAfiliado();
   }
 
+  //Métodos
   cargarAfiliado() {
     this.citasServices.getCitas().subscribe(response => {
       this.citas = response;

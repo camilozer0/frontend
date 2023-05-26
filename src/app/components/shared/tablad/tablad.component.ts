@@ -10,6 +10,7 @@ import { PruebaService } from 'src/app/services/prueba.service';
 })
 export class TabladComponent implements OnInit {
 
+  // Atributos
   @Input() headers: any[] = [];
   @Input() informacion: any[] = [];
   @Input() option: boolean = false;
@@ -25,9 +26,10 @@ export class TabladComponent implements OnInit {
     private afiliadoService: AfiliadoService,
     private pruebaService: PruebaService) { }
 
+  // Métodos
   addColumn() {
     this.totalC = this.headers.concat(this.newC);
-  }
+  };
 
   editEl(idEl: number) {
     if (this.option) {
@@ -35,7 +37,7 @@ export class TabladComponent implements OnInit {
     } else {
       this.router.navigate(['dashboard/pruebas/editar', idEl]);
     }
-  }
+  };
 
   borrarEl(idEl: number) {
     if (this.option) {
@@ -50,5 +52,6 @@ export class TabladComponent implements OnInit {
       });
     }
     window.location.reload();
-  }
+  };
+
 }

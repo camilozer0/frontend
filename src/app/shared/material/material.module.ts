@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -34,7 +35,8 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    NgxMatTimepickerModule
+    NgxMatTimepickerModule,
+    MatSnackBarModule
   ],
   exports: [
     CommonModule,
@@ -50,7 +52,8 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    NgxMatTimepickerModule
+    NgxMatTimepickerModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

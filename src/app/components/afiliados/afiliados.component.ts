@@ -9,13 +9,12 @@ import { AfiliadoService } from 'src/app/services/afiliado.service';
 })
 export class AfiliadosComponent implements OnInit, OnChanges {
 
+  // Atributos
   tituloInicial = 'Afiliados';
-
   public afiliados: any[] = [];
-
   public colQ: any[] = ['id', 'name', 'age', 'email'];
-
   public optionAff = true;
+
 
   constructor(private afiliadoService: AfiliadoService) { }
 
@@ -27,6 +26,8 @@ export class AfiliadosComponent implements OnInit, OnChanges {
     this.cargarAfiliados();
   }
 
+
+  // Métodos
   cargarAfiliados() {
     this.afiliadoService.getAfiliados().subscribe(response => {
       this.afiliados = response;

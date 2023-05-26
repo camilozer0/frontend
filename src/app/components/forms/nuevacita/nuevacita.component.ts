@@ -16,32 +16,27 @@ import * as moment from 'moment';
 })
 export class NuevacitaComponent implements OnInit {
 
+  // Atributos
+  tituloInicial = 'Citas - Nueva Cita';
   public test: Test = {
     id: 0,
     name: '',
     description: ''
   }
-
   public aff: Afiliado = {
     id: 0,
     name: '',
     age: 0,
     email: ''
   }
-
   public app: Cita = {
     date: '',
     hour: '',
     idTest: this.test,
     idAffiliate: this.aff
   };
-
   public affOption: Afiliado[] = [];
-
   public testOption: Test[] = [];
-
-  tituloInicial = 'Citas - Nueva Cita';
-
   citasForm = this.fb.group({
     date: new FormControl('', Validators.required),
     hour: new FormControl('', Validators.required),
@@ -61,6 +56,7 @@ export class NuevacitaComponent implements OnInit {
     this.tests();
   }
 
+  // Métodos
   afiliados() {
     this.affService.getAfiliados().subscribe(response => {
       this.affOption = response;
@@ -80,20 +76,17 @@ export class NuevacitaComponent implements OnInit {
     this.app.hour = moment(dataCita.value.hour, 'h:mm A').format('HH:mm');
     this.app.idTest.id = dataCita.value.idTest;
     this.app.idAffiliate.id = dataCita.value.idAffiliate;
-
     console.log(this.app);
-
-
     this.appService.postCita(this.app).subscribe(response => {
       this.app = response;
       console.log(this.aff);
       this.citasForm.reset;
       this.volverRuta();
     });
-  }
+  };
 
   volverRuta() {
     this.router.navigate(['../'], { relativeTo: this.route });
-  }
+  };
 
 }

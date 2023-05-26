@@ -10,6 +10,7 @@ import { CitaService } from 'src/app/services/cita.service';
 })
 export class TablacitasComponent {
 
+  // Atributos
   @Input() headers: any[] = [];
   @Input() informacion: any[] = [];
   newC = ['icons'];
@@ -22,14 +23,15 @@ export class TablacitasComponent {
 
   constructor(private router: Router, private citasService: CitaService) { }
 
+  // Métodos
   addColumn() {
     this.totalC = this.headers.concat(this.newC);
-  }
+  };
 
   editEl(idEl: number) {
     console.log(idEl)
     this.router.navigate(['dashboard/citas/editar', idEl]);
-  }
+  };
 
   borrarEl(idEl: number) {
     this.citasService.deleteCita(idEl).subscribe((response: { value: any; }) => {
@@ -37,6 +39,6 @@ export class TablacitasComponent {
       this.router.navigate(['dashboard/citas']);
       window.location.reload();
     });
+  };
 
-  }
 }

@@ -11,16 +11,15 @@ import { AfiliadoService } from 'src/app/services/afiliado.service';
 })
 export class EditarafiliadoComponent implements OnInit {
 
-  tituloInicial = 'Afiliados - Nuevo Afiliado';
 
+  // Atributos
+  tituloInicial = 'Afiliados - Nuevo Afiliado';
   afiliadoForm = this.fb.group({
     name: new FormControl(''),
     age: new FormControl(''),
     email: new FormControl('')
   });
-
   public idElement: number = 0;
-
   public editarAf: Afiliado = {
     id: 0,
     name: '',
@@ -40,6 +39,8 @@ export class EditarafiliadoComponent implements OnInit {
     this.traerAfiliado();
   };
 
+
+  // Métodos
   traerAfiliado() {
     this.afiliadoServide.getAfiliado(this.idElement).subscribe(afEditar => {
       this.afiliadoForm = this.fb.group({
@@ -52,7 +53,6 @@ export class EditarafiliadoComponent implements OnInit {
   }
 
   editarAfiliado(afiliadoForm: any) {
-    //this.editarAf.id = afiliadoForm.value.id;
     this.editarAf.name = afiliadoForm.value.name;
     this.editarAf.age = afiliadoForm.value.age;
     this.editarAf.email = afiliadoForm.value.email;
@@ -65,7 +65,6 @@ export class EditarafiliadoComponent implements OnInit {
   }
 
   volverRuta() {
-    //this.router.navigate(['../'], { relativeTo: this.route });
     this.router.navigate(['/dashboard/afiliados']);
   }
 }

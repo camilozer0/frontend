@@ -11,15 +11,13 @@ import { PruebaService } from 'src/app/services/prueba.service';
 })
 export class EditarpruebaComponent implements OnInit {
 
+  // Atributos
   tituloInicial = 'Pruebas - Actualizar Prueba'
-
   pruebaForm = this.fb.group({
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
     description: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')])
   });
-
   public idElement: number = 0;
-
   public editTest: Test = {
     id: 0,
     name: '',
@@ -38,6 +36,7 @@ export class EditarpruebaComponent implements OnInit {
     this.traerTest();
   }
 
+  // Métodos
   traerTest() {
     this.testService.getTest(this.idElement).subscribe(testEditar => {
       this.pruebaForm = this.fb.group({
@@ -47,7 +46,6 @@ export class EditarpruebaComponent implements OnInit {
       this.editTest.id = testEditar.id;
     })
   }
-
 
   editarTest(pruebaForm: any) {
     this.editTest.name = pruebaForm.value.name;
@@ -60,7 +58,6 @@ export class EditarpruebaComponent implements OnInit {
   }
 
   volverRuta() {
-    //this.router.navigate(['../../'], { relativeTo: this.route });
     this.router.navigate(['/dashboard/pruebas']);
   }
 }

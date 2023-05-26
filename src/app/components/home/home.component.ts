@@ -23,6 +23,7 @@ import { CitaService } from 'src/app/services/cita.service';
 
 export class HomeComponent implements OnInit {
 
+  // Atributos
   @ViewChild('maintable') table!: MatTable<any>;
   @ViewChild('expandedtable') tableE!: MatTable<any>;
 

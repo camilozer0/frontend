@@ -14,14 +14,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NuevoafiliadoComponent implements OnInit {
 
+  // Atributos
   tituloInicial = 'Afiliados - Nuevo Afiliado';
-
   public aff: Afiliado = {
     name: '',
     age: 0,
     email: ''
   };
-
   afiliadosForm = this.fb.group({
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
     age: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
@@ -36,6 +35,7 @@ export class NuevoafiliadoComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // Métodos
   openDialog() {
     const dialogRef = this.dialog.open(ConfirmdComponent, {
       width: '180px',
@@ -47,7 +47,7 @@ export class NuevoafiliadoComponent implements OnInit {
         console.log('crear el afiliado')
       }
     });
-  }
+  };
 
   crearAfiliado(dataAff: any): void {
     this.aff.name = dataAff.value.name;

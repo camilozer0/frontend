@@ -10,8 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PruebasComponent implements OnInit, OnChanges {
 
+  // Atributos
   tituloInicial = 'Pruebas'
-
   public tests: Test[] = [];
   public colQ: any[] = ['id', 'name', 'description'];
   public optionAff = false;
@@ -29,6 +29,7 @@ export class PruebasComponent implements OnInit, OnChanges {
     this.cargarTests();
   }
 
+  // Métodos
   /*     nuevaPrueba() {
       this.router.navigate(['nueva'], { relativeTo: this.route });
     } */
@@ -38,9 +39,7 @@ export class PruebasComponent implements OnInit, OnChanges {
       this.tests = res;
       console.log(this.tests);
     })
-
-  }
-
+  };
 
 }
 

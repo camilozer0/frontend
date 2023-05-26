@@ -17,6 +17,7 @@ import { PruebaService } from 'src/app/services/prueba.service';
 })
 export class EditarcitaComponent implements OnInit {
 
+  // Atributos
   tituloInicial = 'Citas - Actualizar Cita';
   public idElement = 0;
   public affOption: Afiliado[] = [];
@@ -29,22 +30,18 @@ export class EditarcitaComponent implements OnInit {
     name: '',
     description: ''
   }
-
   public aff: Afiliado = {
     id: 0,
     name: '',
     age: 0,
     email: ''
   }
-
   public app: Cita = {
     date: '',
     hour: '',
     idTest: this.test,
     idAffiliate: this.aff
   };
-
-
   citaForm = this.fb.group({
     date: new FormControl('', Validators.required),
     hour: new FormControl('', Validators.required),
@@ -68,6 +65,7 @@ export class EditarcitaComponent implements OnInit {
     this.traerCita();
   }
 
+  // Métodos
   afiliados() {
     this.affService.getAfiliados().subscribe(response => {
       this.affOption = response;
@@ -97,26 +95,23 @@ export class EditarcitaComponent implements OnInit {
       console.log(this.citaForm);
     })
 
-  }
+  };
+
   editarCita(dataCita: any) {
     this.app.date = moment(dataCita.value.date).format('DD/MM/YYYY');
     this.app.hour = moment(dataCita.value.hour, 'h:mm A').format('HH:mm');
     this.app.idTest.id = dataCita.value.idTest;
     this.app.idAffiliate.id = dataCita.value.idAffiliate;
-
     console.log(this.app);
-
-
     this.citaService.putCita(this.app).subscribe(response => {
       this.app = response;
       console.log(this.aff);
       this.citaForm.reset;
       this.volverRuta();
     });
-  }
+  };
 
   volverRuta() {
-    //this.router.navigate(['../'], { relativeTo: this.route });
     this.router.navigate(['/dashboard/citas']);
   }
 
