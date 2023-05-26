@@ -60,7 +60,9 @@
     <ng-container matColumnDef="option">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon>expand_more</mat-icon>
+        <mat-icon class="icon1" (click)="toggleExp(element)"
+          >expand_more</mat-icon
+        >
       </td>
     </ng-container>
 
@@ -69,8 +71,8 @@
       *ngFor="let column of headersMain"
     >
       <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-      <td mat-cell *matCellDef="let toshow">
-        {{ toshow["idAffiliate"][column] }}
+      <td mat-cell *matCellDef="let element">
+        {{ element["idAffiliate"][column] }}
       </td>
     </ng-container>
 
@@ -85,7 +87,7 @@
           <table
             #expandedtable
             mat-table
-            [dataSource]="appChild"
+            [dataSource]="appChildExp"
             class="mat-elevation-z8"
           >
             <!--- Note that these columns can be defined in any order.

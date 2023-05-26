@@ -23,7 +23,7 @@ export class PruebaService {
   }
 
   putTest(test: Test): Observable<Test> {
-    return this.http.put<Test>(`${this.baseUrltests}/Test/${test.id}`, test, { headers: this.headers })
+    return this.http.put<Test>(`${this.baseUrltests}/Test`, test, { headers: this.headers })
   }
 
   getTest(idTest: number): Observable<Test> {

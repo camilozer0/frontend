@@ -93,11 +93,12 @@ export class EditarcitaComponent implements OnInit {
       });
       this.initialT = citaEditar.idTest.id!;
       this.initialA = citaEditar.idAffiliate.id!;
+      this.app.id = citaEditar.id;
       console.log(this.citaForm);
     })
 
   }
-  crearCita(dataCita: any) {
+  editarCita(dataCita: any) {
     this.app.date = moment(dataCita.value.date).format('DD/MM/YYYY');
     this.app.hour = moment(dataCita.value.hour, 'h:mm A').format('HH:mm');
     this.app.idTest.id = dataCita.value.idTest;
@@ -106,7 +107,7 @@ export class EditarcitaComponent implements OnInit {
     console.log(this.app);
 
 
-    this.citaService.postCita(this.app).subscribe(response => {
+    this.citaService.putCita(this.app).subscribe(response => {
       this.app = response;
       console.log(this.aff);
       this.citaForm.reset;

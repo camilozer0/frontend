@@ -23,7 +23,7 @@ export class CitaService {
   }
 
   putCita(cita: Cita): Observable<Cita> {
-    return this.http.put<Cita>(`${this.baseUrlCitas}/Appointment/${cita.id}`, cita, { headers: this.headers });
+    return this.http.put<Cita>(`${this.baseUrlCitas}/Appointment`, cita, { headers: this.headers });
   }
 
   getCita(idCita: number): Observable<Cita> {
