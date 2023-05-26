@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { PruebaService } from 'src/app/services/prueba.service';
@@ -24,7 +25,8 @@ export class TabladComponent implements OnInit {
 
   constructor(private router: Router,
     private afiliadoService: AfiliadoService,
-    private pruebaService: PruebaService) { }
+    private pruebaService: PruebaService,
+    private snackBar: MatSnackBar) { }
 
   // Métodos
   addColumn() {
@@ -41,17 +43,26 @@ export class TabladComponent implements OnInit {
 
   borrarEl(idEl: number) {
     if (this.option) {
-      this.afiliadoService.deleteAfiliado(idEl).subscribe((response: { value: any; }) => {
-        console.log(response);
-        this.router.navigate(['dashboard/afiliados']);
-      })
+      this.afiliadoService.deleteAfiliado(idEl).subscribe((delAff: { value: any; }) => {
+        console.log(delAff);
+        this.snackBar.open(`El afiliado con ID ${idEl} ha sido borrado con éxito`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
+      }, null,
+        () => { this.router.navigate(['dashboard/afiliados']), window.location.reload() })
     } else {
-      this.pruebaService.deleteTest(idEl).subscribe((response: { value: any; }) => {
-        console.log(response);
-        this.router.navigate(['dashboard/pruebas']);
-      });
+      this.pruebaService.deleteTest(idEl).subscribe((delTest: { value: any; }) => {
+        console.log(delTest);
+        this.snackBar.open(`La prueba con ID ${idEl} ha sido borrada con éxito`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
+      }, null,
+        () => { this.router.navigate(['dashboard/pruebas']), window.location.reload() }
+      );
     }
-    window.location.reload();
+
   };
 
 }
