@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Test } from 'src/app/models/test';
 import { PruebaService } from 'src/app/services/prueba.service';
@@ -27,7 +28,8 @@ export class EditarpruebaComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private testService: PruebaService) { }
+    private testService: PruebaService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -51,13 +53,18 @@ export class EditarpruebaComponent implements OnInit {
     this.editTest.name = pruebaForm.value.name;
     this.editTest.description = pruebaForm.value.description;
     console.log(pruebaForm)
-    this.testService.putTest(this.editTest).subscribe(response => {
-      console.log(response);
-      this.volverRuta();
-    })
-  }
+    this.testService.putTest(this.editTest).subscribe(editTest => {
+      console.log(editTest);
+      this.snackBar.open(`La cita con ID ${editTest.id} ha sido actualizada con éxito`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom'
+      })
+    }, null,
+      () => this.volverRuta())
+  };
 
   volverRuta() {
     this.router.navigate(['/dashboard/pruebas']);
-  }
+  };
+
 }

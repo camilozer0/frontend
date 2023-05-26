@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Afiliado } from 'src/app/models/afiliado';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
@@ -30,7 +31,8 @@ export class EditarafiliadoComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private afiliadoServide: AfiliadoService) { }
+    private afiliadoServide: AfiliadoService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -57,11 +59,15 @@ export class EditarafiliadoComponent implements OnInit {
     this.editarAf.age = afiliadoForm.value.age;
     this.editarAf.email = afiliadoForm.value.email;
     console.log(afiliadoForm)
-    this.afiliadoServide.putAfiliado(this.editarAf).subscribe(response => {
-      console.log(response);
+    this.afiliadoServide.putAfiliado(this.editarAf).subscribe(editAff => {
+      console.log(editAff);
+      this.snackBar.open(`El afiliado con ID ${editAff.id} ha sido actualizado con éxito`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom'
+      })
       this.afiliadoForm.reset();
-      this.volverRuta();
-    })
+    }, null,
+      () => this.volverRuta())
   }
 
   volverRuta() {

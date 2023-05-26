@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDatepickerInput } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Afiliado } from 'src/app/models/afiliado';
@@ -54,7 +55,8 @@ export class EditarcitaComponent implements OnInit {
     private testService: PruebaService,
     private route: ActivatedRoute,
     private router: Router,
-    private citaService: CitaService) { }
+    private citaService: CitaService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.afiliados();
@@ -103,12 +105,17 @@ export class EditarcitaComponent implements OnInit {
     this.app.idTest.id = dataCita.value.idTest;
     this.app.idAffiliate.id = dataCita.value.idAffiliate;
     console.log(this.app);
-    this.citaService.putCita(this.app).subscribe(response => {
-      this.app = response;
+    this.citaService.putCita(this.app).subscribe(editApp => {
+      this.app = editApp;
       console.log(this.aff);
+      this.snackBar.open(`La cita con ID ${editApp.id} ha sido actualizada con éxito`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom'
+      })
       this.citaForm.reset;
-      this.volverRuta();
-    });
+    }, null,
+      () => this.volverRuta()
+    );
   };
 
   volverRuta() {

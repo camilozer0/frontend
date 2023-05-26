@@ -8,6 +8,7 @@ import { CitaService } from 'src/app/services/cita.service';
 import { PruebaService } from 'src/app/services/prueba.service';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import * as moment from 'moment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-nuevacita',
@@ -49,7 +50,8 @@ export class NuevacitaComponent implements OnInit {
     private route: ActivatedRoute,
     private appService: CitaService,
     private testService: PruebaService,
-    private affService: AfiliadoService) { }
+    private affService: AfiliadoService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.afiliados();
@@ -80,9 +82,14 @@ export class NuevacitaComponent implements OnInit {
     this.appService.postCita(this.app).subscribe(response => {
       this.app = response;
       console.log(this.aff);
+      this.snackBar.open(`La cita con ID ${this.app.id} ha sido creada con éxito`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom'
+      })
       this.citasForm.reset;
-      this.volverRuta();
-    });
+    }, null,
+      () => this.volverRuta()
+    );
   };
 
   volverRuta() {

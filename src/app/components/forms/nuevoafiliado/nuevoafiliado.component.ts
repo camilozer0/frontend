@@ -5,6 +5,7 @@ import { ConfirmdComponent } from '../../shared/confirmd/confirmd.component';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { Afiliado } from 'src/app/models/afiliado';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class NuevoafiliadoComponent implements OnInit {
     public dialog: MatDialog,
     private afiliadoService: AfiliadoService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void { }
 
@@ -56,8 +58,12 @@ export class NuevoafiliadoComponent implements OnInit {
     this.afiliadoService.postAfiliado(this.aff).subscribe(response => {
       this.aff = response;
       this.afiliadosForm.reset;
-      this.volverRuta();
-    });
+      this.snackBar.open(`El afiliado con ID ${this.aff.id} ha sido creado con éxito`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom'
+      });
+    }, null,
+      () => this.volverRuta());
   }
 
   volverRuta() {
