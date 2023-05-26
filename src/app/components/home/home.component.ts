@@ -1,5 +1,4 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
@@ -30,14 +29,10 @@ export class HomeComponent implements OnInit {
   // El titulo de la vista
   tituloInicial = "Consultas";
   public afiliados: Afiliado[] = [];
-  public afiliado: Afiliado[] = [{
-    id: 0,
-    name: 'Camilo',
-    age: 0,
-    email: 'mazorra006@gmail.com'
-  }];
   public idToShow: number = 0;
-  public appointments: Cita[] = [];
+  public appParent: Cita[] = [];
+  public appChild: any[] = [];
+  public appChildExp: any[] = [];
   //expanded: false at the end of each affiliate (take into account)
   minDate = new Date(1920, 0, 1);
   maxDate = new Date(2024, 0, 1);
@@ -74,22 +69,18 @@ export class HomeComponent implements OnInit {
   }
 
   byAff(datosForm: FormGroup) {
-    this.appointments = [];
-    this.afiliadoService.getAfiliado(datosForm.value.idAff).subscribe(affShow => {
-      this.afiliado[0] = affShow;
-      this.idToShow = this.afiliado[0].id!;
-      this.table.renderRows();
-    });
+    this.cleanApps();
     this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByAff => {
       if (appByAff !== undefined) {
-        const foundCita = appByAff.find(element => element.idAffiliate.id === this.idToShow)
+        this.appChild = appByAff;
+        const foundCita = appByAff.find(element => element.idAffiliate.id === datosForm.value.idAff)
         if (foundCita !== undefined) {
-          this.appointments.push(foundCita);
-          console.log(this.appointments);
+          this.appParent.push(foundCita);
+          console.log(this.appParent);
         }
       }
-      this.table.renderRows();
-    });
+    }, null,
+      () => this.table.renderRows());
   }
   /* manageAllRows(flag: boolean) {
     this.afiliados.forEach(row => {
@@ -98,9 +89,10 @@ export class HomeComponent implements OnInit {
   } */
 
   byDate(datosForm: FormGroup) {
-    this.appointments = [];
+    this.cleanApps();
     this.appService.getAppByDate(moment(datosForm.value.date).format('YYYY-MM-DD')).subscribe(appByDate => {
       if (appByDate !== undefined) {
+        this.appChild = appByDate;
         const uniqueIdT = [];
         const idTMap: { [key: number]: boolean } = {};
         for (const obj of appByDate) {
@@ -111,12 +103,26 @@ export class HomeComponent implements OnInit {
           }
         }
         if (uniqueIdT !== undefined) {
-          this.appointments = uniqueIdT;
+          this.appParent = uniqueIdT;
+          this.expandedApp();
           console.log(uniqueIdT);
         }
       };
+    }, null,
+      () => this.table.renderRows()
+    )
+  };
 
-    })
-  }
+  cleanApps() {
+    this.appParent = [];
+    this.appChild = [];
+  };
+
+  expandedApp() {
+    for (const obj of this.appChild) {
+      obj.expanded = false;
+    }
+    console.log(this.appChild);
+  };
 
 }

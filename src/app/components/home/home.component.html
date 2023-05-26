@@ -53,7 +53,7 @@
   <table
     #maintable
     mat-table
-    [dataSource]="appointments"
+    [dataSource]="appParent"
     multiTemplateDataRows
     class="mat-elevation-z8"
   >
@@ -85,7 +85,7 @@
           <table
             #expandedtable
             mat-table
-            [dataSource]="appointments"
+            [dataSource]="appChild"
             class="mat-elevation-z8"
           >
             <!--- Note that these columns can be defined in any order.
