@@ -38,10 +38,10 @@ export class TablacitasComponent {
   borrarEl(idEl: number) {
     this.citasService.deleteCita(idEl).subscribe((response: { value: any; }) => {
       console.log(response);
-      this.router.navigate(['dashboard/citas'])
+      this.router.navigate(['dashboard/citas']), window.location.reload()
     }, null,
       () => {
-        window.location.reload(), this.snackBar.open(`La prueba con ID ${idEl} ha sido borrada con éxito`, '', {
+        this.snackBar.open(`La prueba con ID ${idEl} ha sido borrada con éxito`, '', {
           duration: 3000,
           verticalPosition: 'bottom'
         })
