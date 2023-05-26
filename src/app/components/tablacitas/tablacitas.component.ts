@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { CitaService } from 'src/app/services/cita.service';
 
 @Component({
@@ -21,7 +21,9 @@ export class TablacitasComponent {
     this.addColumn();
   }
 
-  constructor(private router: Router, private citasService: CitaService) { }
+  constructor(private router: Router,
+    private citasService: CitaService,
+    private snackBar: MatSnackBar) { }
 
   // Métodos
   addColumn() {
@@ -36,9 +38,14 @@ export class TablacitasComponent {
   borrarEl(idEl: number) {
     this.citasService.deleteCita(idEl).subscribe((response: { value: any; }) => {
       console.log(response);
-      this.router.navigate(['dashboard/citas']);
-      window.location.reload();
-    });
+      this.router.navigate(['dashboard/citas'])
+    }, null,
+      () => {
+        window.location.reload(), this.snackBar.open(`La prueba con ID ${idEl} ha sido borrada con éxito`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
+      });
   };
 
 }
