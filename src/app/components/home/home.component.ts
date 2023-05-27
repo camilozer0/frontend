@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   @ViewChild('maintable') table!: MatTable<any>;
   @ViewChild('expandedtable') tableE!: MatTable<any>;
 
-  // El titulo de la vista
   tituloInicial = "Consultas";
   public afiliados: Afiliado[] = [];
   public idToShow: number = 0;
@@ -45,6 +44,7 @@ export class HomeComponent implements OnInit {
   headersMainExp: string[] = ['option', 'id', 'name', 'age', 'email'];
   colDataExpandible: string[] = ['id', 'date', 'hour', 'idTest', 'testName'];
   columnsToDisplay = ['id', 'name', 'email', 'address'];
+  arrowExp = 'expand_more';
 
   constructor(private afiliadoService: AfiliadoService,
     private appService: CitaService,
@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarAfiliados();
+
   }
 
   // Métodos
@@ -129,6 +130,7 @@ export class HomeComponent implements OnInit {
 
   toggleExp(element: any) {
     this.appChildExp = this.appChild.filter(object => object.idAffiliate.id === element.idAffiliate.id);
+    this.arrowExp = 'expand_less';
     console.log(this.appChildExp);
   }
 
