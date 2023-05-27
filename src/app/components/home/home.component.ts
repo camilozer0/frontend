@@ -64,8 +64,8 @@ export class HomeComponent implements OnInit {
 
   toggleRow(element: { expanded: boolean; }) {
     // Uncommnet to open only single row at once
-    this.afiliados.forEach(row => {
-      //row.expanded = false;
+    this.appChild.forEach(row => {
+      row.expanded = false;
     })
     element.expanded = !element.expanded;
   }
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
     this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByAff => {
       if (appByAff !== undefined) {
         this.appChild = appByAff;
-        this.expandedApp();
+        //this.expandedApp();
         const foundCita = appByAff.find(element => element.idAffiliate.id === datosForm.value.idAff)
         if (foundCita !== undefined) {
           this.appParent.push(foundCita);
@@ -85,18 +85,18 @@ export class HomeComponent implements OnInit {
     }, null,
       () => this.table.renderRows());
   }
-  /* manageAllRows(flag: boolean) {
-    this.afiliados.forEach(row => {
+  manageAllRows(flag: boolean) {
+    this.appChild.forEach(row => {
       row.expanded = flag;
     })
-  } */
+  }
 
   byDate(datosForm: FormGroup) {
     this.cleanApps();
     this.appService.getAppByDate(moment(datosForm.value.date).format('YYYY-MM-DD')).subscribe(appByDate => {
       if (appByDate !== undefined) {
         this.appChild = appByDate;
-        this.expandedApp();
+        //this.expandedApp();
         const uniqueIdT = [];
         const idTMap: { [key: number]: boolean } = {};
         for (const obj of appByDate) {
@@ -121,16 +121,17 @@ export class HomeComponent implements OnInit {
     this.appChild = [];
   };
 
-  expandedApp() {
-    for (const obj of this.appChild) {
-      obj.expanded = false;
-    }
-    console.log(this.appChild);
-  };
+  /*  expandedApp() {
+     for (const obj of this.appChild) {
+       obj.expanded = false;
+     }
+     console.log(this.appChild);
+   }; */
 
   toggleExp(element: any) {
     this.appChildExp = this.appChild.filter(object => object.idAffiliate.id === element.idAffiliate.id);
     this.arrowExp = 'expand_less';
+    //this.element.expanded = !this.element.expanded;
     console.log(this.appChildExp);
   }
 
