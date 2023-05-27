@@ -45,7 +45,12 @@ export class TabladComponent implements OnInit {
     if (this.option) {
       this.afiliadoService.deleteAfiliado(idEl).subscribe((delAff: { value: any; }) => {
         console.log(delAff);
-      }, null,
+      }, () => {
+        this.snackBar.open(`El afiliado con ID ${idEl} tiene una cita agendada`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        });
+      },
         () => {
           this.router.navigate(['dashboard/afiliados']), window.location.reload(), this.snackBar.open(`El afiliado con ID ${idEl} ha sido borrado con éxito`, '', {
             duration: 3000,
@@ -55,7 +60,12 @@ export class TabladComponent implements OnInit {
     } else {
       this.pruebaService.deleteTest(idEl).subscribe((delTest: { value: any; }) => {
         console.log(delTest);
-      }, null,
+      }, () => {
+        this.snackBar.open(`La prueba con ID ${idEl} tiene una cita agendada`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        });
+      },
         () => {
           this.router.navigate(['dashboard/pruebas']), window.location.reload(), this.snackBar.open(`La prueba con ID ${idEl} ha sido borrada con éxito`, '', {
             duration: 3000,

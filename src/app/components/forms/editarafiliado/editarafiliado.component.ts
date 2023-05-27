@@ -66,7 +66,9 @@ export class EditarafiliadoComponent implements OnInit {
         verticalPosition: 'bottom'
       })
       this.afiliadoForm.reset();
-    }, null,
+    }, (msg) => {
+      console.log('hubo un error', msg);
+    },
       () => this.volverRuta())
   }
 
