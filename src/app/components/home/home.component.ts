@@ -68,7 +68,6 @@ export class HomeComponent implements OnInit {
         const foundCita = appByAff.find(element => element.idAffiliate.id === datosForm.value.idAff)
         if (foundCita !== undefined) {
           this.appParent.push(foundCita);
-          // console.log(this.appParent);
         }
       }
     }, null,
@@ -92,7 +91,6 @@ export class HomeComponent implements OnInit {
         }
         if (uniqueIdT !== undefined) {
           this.appParent = uniqueIdT;
-          // console.log(uniqueIdT);
         }
       };
     }, null,
@@ -108,7 +106,6 @@ export class HomeComponent implements OnInit {
   toggleExp(element: any) {
     this.toggleRow(element)
     this.appChildExp = this.appChild.filter(object => object.idAffiliate.id === element.idAffiliate.id);
-    console.log(this.appChildExp);
   }
 
   manageAllRows(flag: boolean) {

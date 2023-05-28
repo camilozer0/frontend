@@ -35,7 +35,6 @@ export class NuevapruebaComponent {
     this.test.description = dataTest.value.description;
     this.testService.postTest(this.test).subscribe(response => {
       this.test = response;
-      console.log(this.test);
       this.pruebasForm.reset();
       this.snackBar.open(`La prueba con ID ${this.test.id} ha sido creada con éxito`, '', {
         duration: 3000,

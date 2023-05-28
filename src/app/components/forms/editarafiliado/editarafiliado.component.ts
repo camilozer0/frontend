@@ -58,7 +58,6 @@ export class EditarafiliadoComponent implements OnInit {
     this.editarAf.name = afiliadoForm.value.name;
     this.editarAf.age = afiliadoForm.value.age;
     this.editarAf.email = afiliadoForm.value.email;
-    console.log(afiliadoForm)
     this.afiliadoServide.putAfiliado(this.editarAf).subscribe(editAff => {
       console.log(editAff);
       this.snackBar.open(`El afiliado con ID ${editAff.id} ha sido actualizado con éxito`, '', {

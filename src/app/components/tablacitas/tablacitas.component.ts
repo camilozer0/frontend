@@ -31,13 +31,11 @@ export class TablacitasComponent {
   };
 
   editEl(idEl: number) {
-    console.log(idEl)
     this.router.navigate(['dashboard/citas/editar', idEl]);
   };
 
   borrarEl(idEl: number) {
     this.citasService.deleteCita(idEl).subscribe((response: { value: any; }) => {
-      console.log(response);
       this.router.navigate(['dashboard/citas']), window.location.reload()
     }, null,
       () => {

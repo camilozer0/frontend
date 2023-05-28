@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatDatepickerInput } from '@angular/material/datepicker';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -71,15 +70,13 @@ export class EditarcitaComponent implements OnInit {
   afiliados() {
     this.affService.getAfiliados().subscribe(response => {
       this.affOption = response;
-/*       console.log(this.affOption)
- */    });
+    });
   }
 
   tests() {
     this.testService.getTests().subscribe(response => {
       this.testOption = response;
-/*       console.log(this.testOption);
- */    });
+    });
   };
 
   traerCita() {
@@ -94,7 +91,6 @@ export class EditarcitaComponent implements OnInit {
       this.initialT = citaEditar.idTest.id!;
       this.initialA = citaEditar.idAffiliate.id!;
       this.app.id = citaEditar.id;
-      console.log(this.citaForm);
     })
 
   };
@@ -107,7 +103,6 @@ export class EditarcitaComponent implements OnInit {
     console.log(this.app);
     this.citaService.putCita(this.app).subscribe(editApp => {
       this.app = editApp;
-      console.log(this.aff);
       this.snackBar.open(`La cita con ID ${editApp.id} ha sido actualizada con éxito`, '', {
         duration: 3000,
         verticalPosition: 'bottom'

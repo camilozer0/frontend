@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmdComponent } from '../../shared/confirmd/confirmd.component';
 import { AfiliadoService } from 'src/app/services/afiliado.service';
 import { Afiliado } from 'src/app/models/afiliado';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -38,19 +37,6 @@ export class NuevoafiliadoComponent implements OnInit {
   ngOnInit(): void { }
 
   // Métodos
-  openDialog() {
-    const dialogRef = this.dialog.open(ConfirmdComponent, {
-      width: '180px',
-      data: 'esta seguro?'
-    });
-    dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
-      if (res) {
-        console.log('crear el afiliado')
-      }
-    });
-  };
-
   crearAfiliado(dataAff: any): void {
     this.aff.name = dataAff.value.name;
     this.aff.age = dataAff.value.age;

@@ -40,8 +40,6 @@ export class CitasComponent {
       this.citas2 = response.map(o => Object.values(o)[1]);
       this.citas2 = response.map(o => Object.values(o)[1]);
       this.citas2 = response.map(o => Object.values(o)[1]);
-
-      //Recordar acá cuadrar la parte de las citas
       console.log(this.citas2 = response.map(o => Object.values(o)[1]));
       console.log(this.citas2)
       //console.log(Object.values(this.citas[0]['idAffiliate'])[0]);

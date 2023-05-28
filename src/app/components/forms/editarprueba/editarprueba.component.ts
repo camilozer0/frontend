@@ -54,7 +54,6 @@ export class EditarpruebaComponent implements OnInit {
     this.editTest.description = pruebaForm.value.description;
     console.log(pruebaForm)
     this.testService.putTest(this.editTest).subscribe(editTest => {
-      console.log(editTest);
       this.snackBar.open(`La cita con ID ${editTest.id} ha sido actualizada con éxito`, '', {
         duration: 3000,
         verticalPosition: 'bottom'

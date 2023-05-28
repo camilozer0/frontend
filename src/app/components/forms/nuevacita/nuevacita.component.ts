@@ -81,7 +81,6 @@ export class NuevacitaComponent implements OnInit {
     console.log(this.app);
     this.appService.postCita(this.app).subscribe(response => {
       this.app = response;
-      console.log(this.aff);
       this.snackBar.open(`La cita con ID ${this.app.id} ha sido creada con éxito`, '', {
         duration: 3000,
         verticalPosition: 'bottom'
