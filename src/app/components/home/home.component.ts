@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
   public appParent: Cita[] = [];
   public appChild: any[] = [];
   public appChildExp: any[] = [];
-  //expanded: false at the end of each affiliate (take into account)
   minDate = new Date(1920, 0, 1);
   maxDate = new Date(2024, 0, 1);
   datosForm = this.fb.group({
@@ -44,7 +43,6 @@ export class HomeComponent implements OnInit {
   headersMainExp: string[] = ['option', 'id', 'name', 'age', 'email'];
   colDataExpandible: string[] = ['id', 'date', 'hour', 'idTest', 'testName'];
   columnsToDisplay = ['id', 'name', 'email', 'address'];
-  arrowExp = 'expand_more';
 
   constructor(private afiliadoService: AfiliadoService,
     private appService: CitaService,
@@ -62,20 +60,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  toggleRow(element: { expanded: boolean; }) {
-    // Uncommnet to open only single row at once
-    this.appChild.forEach(row => {
-      row.expanded = false;
-    })
-    element.expanded = !element.expanded;
-  }
-
   byAff(datosForm: FormGroup) {
     this.cleanApps();
     this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByAff => {
       if (appByAff !== undefined) {
         this.appChild = appByAff;
-        //this.expandedApp();
         const foundCita = appByAff.find(element => element.idAffiliate.id === datosForm.value.idAff)
         if (foundCita !== undefined) {
           this.appParent.push(foundCita);
@@ -85,18 +74,13 @@ export class HomeComponent implements OnInit {
     }, null,
       () => this.table.renderRows());
   }
-  manageAllRows(flag: boolean) {
-    this.appChild.forEach(row => {
-      row.expanded = flag;
-    })
-  }
+
 
   byDate(datosForm: FormGroup) {
     this.cleanApps();
     this.appService.getAppByDate(moment(datosForm.value.date).format('YYYY-MM-DD')).subscribe(appByDate => {
       if (appByDate !== undefined) {
         this.appChild = appByDate;
-        //this.expandedApp();
         const uniqueIdT = [];
         const idTMap: { [key: number]: boolean } = {};
         for (const obj of appByDate) {
@@ -121,18 +105,28 @@ export class HomeComponent implements OnInit {
     this.appChild = [];
   };
 
-  /*  expandedApp() {
-     for (const obj of this.appChild) {
-       obj.expanded = false;
-     }
-     console.log(this.appChild);
-   }; */
-
   toggleExp(element: any) {
+    this.toggleRow(element)
     this.appChildExp = this.appChild.filter(object => object.idAffiliate.id === element.idAffiliate.id);
-    this.arrowExp = 'expand_less';
-    //this.element.expanded = !this.element.expanded;
     console.log(this.appChildExp);
+  }
+
+  manageAllRows(flag: boolean) {
+    this.appChild.forEach(row => {
+      row.expanded = flag;
+    })
+  }
+
+  toggleRow(element: { expanded: boolean; }) {
+    if (element.expanded) {
+      element.expanded = !element.expanded;
+    } else {
+      this.appChild.forEach(row => {
+        row.expanded = false;
+      })
+      element.expanded = !element.expanded;
+    }
+
   }
 
 }
