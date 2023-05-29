@@ -72,7 +72,10 @@ export class HomeComponent implements OnInit {
         }
       }
     }, null,
-      () => this.table.renderRows());
+      () => {
+        this.table.renderRows(),
+          datosForm.get('date')?.setValue('')
+      })
   }
 
 
@@ -100,7 +103,10 @@ export class HomeComponent implements OnInit {
         })
       };
     }, null,
-      () => this.table.renderRows()
+      () => {
+        this.table.renderRows(),
+          datosForm.get('idAff')?.setValue('');
+      }
     )
   };
 
