@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //Other
-import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 //material modules
@@ -30,13 +30,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    HttpClientModule,
+    //HttpClientModule,
     MatTableModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
     NgxMatTimepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -47,7 +47,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    HttpClientModule,
+    //HttpClientModule,
     MatTableModule,
     ReactiveFormsModule,
     MatSelectModule,

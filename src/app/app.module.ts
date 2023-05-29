@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +22,7 @@ import { NuevoafiliadoComponent } from './components/forms/nuevoafiliado/nuevoaf
 import { EditarafiliadoComponent } from './components/forms/editarafiliado/editarafiliado.component';
 import { ConfirmdComponent } from './components/shared/confirmd/confirmd.component';
 import { TablacitasComponent } from './components/tablacitas/tablacitas.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -48,9 +50,10 @@ import { TablacitasComponent } from './components/tablacitas/tablacitas.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule
   ],
   entryComponents: [ConfirmdComponent],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
