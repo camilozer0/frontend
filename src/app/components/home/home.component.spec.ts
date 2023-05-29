@@ -8,16 +8,18 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [HomeComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Verificar el componente', () => {
     expect(component).toBeTruthy();
   });
 });

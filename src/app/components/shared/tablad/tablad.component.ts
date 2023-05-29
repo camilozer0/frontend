@@ -44,7 +44,6 @@ export class TabladComponent implements OnInit {
   borrarEl(idEl: number) {
     if (this.option) {
       this.afiliadoService.deleteAfiliado(idEl).subscribe((delAff: { value: any; }) => {
-        console.log(delAff);
       }, () => {
         this.snackBar.open(`El afiliado con ID ${idEl} tiene una cita agendada`, '', {
           duration: 3000,
@@ -59,7 +58,6 @@ export class TabladComponent implements OnInit {
         })
     } else {
       this.pruebaService.deleteTest(idEl).subscribe((delTest: { value: any; }) => {
-        console.log(delTest);
       }, () => {
         this.snackBar.open(`La prueba con ID ${idEl} tiene una cita agendada`, '', {
           duration: 3000,

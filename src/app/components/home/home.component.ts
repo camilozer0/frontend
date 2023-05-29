@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
 import * as moment from 'moment';
 import { Afiliado } from 'src/app/models/afiliado';
@@ -46,11 +47,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private afiliadoService: AfiliadoService,
     private appService: CitaService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.cargarAfiliados();
-
   }
 
   // Métodos
@@ -78,7 +79,7 @@ export class HomeComponent implements OnInit {
   byDate(datosForm: FormGroup) {
     this.cleanApps();
     this.appService.getAppByDate(moment(datosForm.value.date).format('YYYY-MM-DD')).subscribe(appByDate => {
-      if (appByDate !== undefined) {
+      if (appByDate !== undefined && appByDate !== null) {
         this.appChild = appByDate;
         const uniqueIdT = [];
         const idTMap: { [key: number]: boolean } = {};
@@ -92,6 +93,11 @@ export class HomeComponent implements OnInit {
         if (uniqueIdT !== undefined) {
           this.appParent = uniqueIdT;
         }
+      } else {
+        this.snackBar.open(`No hay citas para la fecha ${moment(datosForm.value.date).format('DD-MM-YYYY')}`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        })
       };
     }, null,
       () => this.table.renderRows()
