@@ -2,17 +2,17 @@
   <table mat-table [dataSource]="informacion" class="mat-elevation-z8">
     <!-- Define the columns -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <th mat-header-cell *matHeaderCellDef>Id Cita</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
       <td mat-cell *matCellDef="let element">{{ element.date }}</td>
     </ng-container>
 
     <ng-container matColumnDef="hour">
-      <th mat-header-cell *matHeaderCellDef>Hour</th>
+      <th mat-header-cell *matHeaderCellDef>Hora</th>
       <td mat-cell *matCellDef="let element">{{ element.hour }}</td>
     </ng-container>
 
@@ -22,12 +22,12 @@
     </ng-container>
 
     <ng-container matColumnDef="id Affiliate">
-      <th mat-header-cell *matHeaderCellDef>id Affiliate</th>
+      <th mat-header-cell *matHeaderCellDef>id Afiliado</th>
       <td mat-cell *matCellDef="let element">{{ element.idAffiliate.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef="icons">
-      <th mat-header-cell *matHeaderCellDef>Icons</th>
+      <th mat-header-cell *matHeaderCellDef>Opciones</th>
       <td mat-cell *matCellDef="let element">
         <mat-icon
           style="color: slateblue"

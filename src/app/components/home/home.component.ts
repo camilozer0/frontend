@@ -40,8 +40,20 @@ export class HomeComponent implements OnInit {
     date: new FormControl(''),
     idAff: new FormControl('')
   })
-  headersMain: string[] = ['id', 'name', 'age', 'email'];
-  headersMainExp: string[] = ['option', 'id', 'name', 'age', 'email'];
+  headersMainKV: { [key: string]: string } = {
+    id: 'Id Afiliado',
+    name: 'Nombre',
+    age: 'Edad',
+    email: 'Correo'
+  };
+  headersMainKVExp: { [key: string]: string } = {
+    option: 'option',
+    id: 'Id Afiliado',
+    name: 'Nombre',
+    age: 'Edad',
+    email: 'Correo'
+  };
+  headersKeys = Object.keys(this.headersMainKVExp);
   colDataExpandible: string[] = ['id', 'date', 'hour', 'idTest', 'testName'];
   columnsToDisplay = ['id', 'name', 'email', 'address'];
 
@@ -64,12 +76,17 @@ export class HomeComponent implements OnInit {
   byAff(datosForm: FormGroup) {
     this.cleanApps();
     this.appService.getAppbyAff(datosForm.value.idAff).subscribe(appByAff => {
-      if (appByAff !== undefined) {
+      if (appByAff !== undefined && appByAff !== null) {
         this.appChild = appByAff;
         const foundCita = appByAff.find(element => element.idAffiliate.id === datosForm.value.idAff)
         if (foundCita !== undefined) {
           this.appParent.push(foundCita);
         }
+      } else {
+        this.snackBar.open(`El afiliado No.${datosForm.value.idAff} no tiene citas asignadas`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom'
+        });
       }
     }, null,
       () => {

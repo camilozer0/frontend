@@ -12,7 +12,12 @@ export class AfiliadosComponent implements OnInit, OnChanges {
   // Atributos
   tituloInicial = 'Afiliados';
   public afiliados: any[] = [];
-  public colQ: any[] = ['id', 'name', 'age', 'email'];
+  public colQ: { [key: string]: string } = {
+    id: 'Id Afiliado',
+    name: 'Nombre',
+    age: 'Edad',
+    email: 'Correo'
+  };
   public optionAff = true;
 
 
@@ -25,7 +30,6 @@ export class AfiliadosComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.cargarAfiliados();
   }
-
 
   // Métodos
   cargarAfiliados() {

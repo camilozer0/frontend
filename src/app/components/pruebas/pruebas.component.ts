@@ -13,7 +13,11 @@ export class PruebasComponent implements OnInit, OnChanges {
   // Atributos
   tituloInicial = 'Pruebas'
   public tests: Test[] = [];
-  public colQ: any[] = ['id', 'name', 'description'];
+  public colQ: { [key: string]: string } = {
+    id: 'Id Cita',
+    name: 'Nombre',
+    description: 'descripción'
+  };
   public optionAff = false;
 
   constructor(private testService: PruebaService,

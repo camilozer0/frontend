@@ -12,11 +12,11 @@ import { PruebaService } from 'src/app/services/prueba.service';
 export class TabladComponent implements OnInit {
 
   // Atributos
-  @Input() headers: any[] = [];
+  @Input() headers: { [key: string]: string } = {};
   @Input() informacion: any[] = [];
   @Input() option: boolean = false;
-  newC = ['icons'];
-  totalC: string[] = []
+  headersKey: string[] = [];
+  headersExp: { [key: string]: string } = {};
 
 
   ngOnInit(): void {
@@ -30,7 +30,9 @@ export class TabladComponent implements OnInit {
 
   // Métodos
   addColumn() {
-    this.totalC = this.headers.concat(this.newC);
+    this.headersKey = Object.keys(this.headers);
+    this.headersKey.push('options');
+    console.log(this.headersKey);
   };
 
   editEl(idEl: number) {
